@@ -1,0 +1,361 @@
+ \documentclass[a4paper,12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[pdftex]{graphicx}
+\usepackage[english, russian]{babel} % Языки: русский, английский
+\usepackage[pdftex]{graphicx}
+\usepackage{textcase}
+\usepackage{amssymb,amsmath,amsthm,amsfonts}
+\usepackage{geometry}
+\geometry{a4paper,top=2cm,bottom=2cm,left=3cm,right=1cm}
+
+\theoremstyle{plain}
+
+\newtheorem{definition}{Определение}[section]
+\newtheorem{lemma}{Лемма}[section]
+%\newtheorem{proof}{Доказательство}
+\newtheorem{theorem}{Теорема}[section]
+%\numberwithin{equation}[section]
+
+\begin{document}
+
+
+\section{Математическая модель вкраплений на основе схемы независимых испытаний}
+
+\vspace*{1cm}
+Контейнер представляет собой последовательность случайных величин распределенных по закону Бернулли с параметром p:
+\begin{equation}\label{container:eq}\
+\mathcal{L}{x_t} = Bi(1, p), x_i \in V = {0, 1}, i = \overline{1,T};
+\end{equation}
+Вкрапляемое сообщение имеет вид:
+\begin{equation}
+	\mathcal{L}{m_t} = Bi(1, \theta), m_i \in V = {0, 1}, i = \overline{1,\tau};
+\end{equation}
+Ключ $\gamma_t$ определяет момент времени вкрапления i-того бита сообщения в исходный контейнер:
+\begin{equation}
+	\mathcal{L}{\gamma_t} = Bi(1, \delta), \gamma_i \in V = {0, 1}, i = \overline{1,T};
+\end{equation}
+Вкрапление битов ${m_t}$ производится по правилу, заданному следующим функциональным преобразованием:
+\begin{equation}\label{input:rule}
+y_t=(1-\gamma_t)x_t+\gamma_t m_{\tau_t};
+\end{equation}
+
+\begin{lemma}\label{lemma:1}
+	Для модели (\ref{container:eq})-(\ref{input:rule})
+	\begin{equation}
+		P\{y_t=1\}=(1-\delta)p+\delta\theta;
+	\end{equation}
+	\begin{equation}
+		P\{y_t=0\} = (1-\delta)(1-p)+ \delta(1-\theta);
+	\end{equation}
+\end{lemma}
+\begin{proof}
+	Воспользуемся формулой полной вероятности:\\
+	$P\{y_t=1\}=P\{(1-\gamma_t)x_t + \gamma_t m_{\tau_t} =1\} = \sum_{j \in V} P\{y_t = 1, \gamma_t = j\} =\sum_{j \in V} P\{\gamma_t = j\} P\{y_t = 1|\gamma_t = j\} = (1-\delta)P\{x_=1, \gamma_t=0\} + \delta P\{m_{\tau_t}=1, \gamma_t =1\} = (1-\delta)p + \delta\theta;\\$
+	Тогда:\\
+	$P\{y_t = 0\} = 1 - P\{y_t = 1\}= (1-\delta)(1-p)+\delta(1-\theta);$
+\end{proof} 
+\begin{equation}
+h = \frac{H(y_1,...,y_t)}{T} = \frac{TH(y_1)}{T}=H(y_1);
+\end{equation}
+Воспользуемся леммой \ref{lemma:1}:\newline
+$
+h = -P\{y_t=1\}\log_2 P(y_t = 1)-P\{y_t=0\}\log_2 P(y_t = 0) = - ((1-\delta)p+\delta\theta)\log_2 ((1-\delta)p+\delta\theta) - ((1-\delta)(1-p) + \delta(1-\theta))\log_2((1-\delta)(1-p) + \delta(1-\theta)).
+$
+
+
+
+\newpage
+\section{Математическая модель вкраплений в двоичную стационарную марковскую последовательность 1-го порядка и ее свойства}
+
+Рассмотрим модель (\ref{container:eq})-(\ref{input:rule}).
+
+ Пусть контейнер (\ref{container:eq}) пердставляет собой цепь Маркова 1-го порядка с вектором распределения вероятностей $\pi = (\frac{1}{2}, \frac{1}{2})$ и матрицей вероятностей одношаговых переходов
+ \begin{equation}\label{markov:rule} 
+ P(\varepsilon)=\frac{1}{2}\bigl( \begin{matrix}
+1+\varepsilon,  1-\varepsilon\\
+1-\varepsilon,  1+\varepsilon
+\end{matrix}\bigl), |\varepsilon|<1, \varepsilon \neq 0.
+\end{equation}
+\begin{lemma}
+	Для модели (\ref{container:eq})-(\ref{input:rule}) с условием (\ref{markov:rule}):
+	\begin{equation}\label{1:1}
+	P\{y_{t-1}=1, y_t = 1 \}=\frac{1}{4}(1+\varepsilon)(1-\delta)^2+\theta\delta(1-\delta)+\theta^2\delta^2;
+	\end{equation}
+	\begin{equation}\label{0:1}
+		P\{y_{t-1}=1, y_t = 0 \}=\frac{1}{4}(1-\varepsilon)(1-\delta)^2+\frac{1}{2}\delta(1-\delta)+\theta(1-\theta)\delta^2;
+	\end{equation}
+	\begin{equation}
+		P\{y_{t-1}=0, y_t = 1 \}=\frac{1}{4}(1-\varepsilon)(1-\delta)^2+\frac{1}{2}\delta(1-\delta)+\theta(1-\theta)\delta^2;
+	\end{equation}
+	\begin{equation}\label{0:0}
+	P\{y_{t-1}=0, y_t = 0 \}=\frac{1}{4}(1+\varepsilon)(1-\delta)^2+\delta(1-\theta)(1-\delta)+\delta^2(1-\theta)^2.
+	\end{equation}
+\end{lemma}
+\begin{proof}
+	Рассмотрим биграмм: $\{y_{t-1}, y_t\}$\\
+	$(a_1, a_2) \in \{0,1\}, P\{y_{t-1}=a_1, y_t=a_2\} = \sum_{(b_1, b_2)\in \{0, 1\}^2} P\{y_{t-1} = b_1, y_t = b_2, \gamma_{t-1}=a_1, \gamma_t = a_2\}= \sum_{(b_1, b_2)\in \{0, 1\}^2} P\{y_{t-1} = b_1, y_t = b_2| \gamma_{t-1}=a_1, \gamma_t = a_2\}P\{\gamma_{t-1}=a_1, \gamma_t = a_2\}.$\\
+	Для (\ref{1:1}):\\
+	$\sum_{(b_1, b_2)\in \{0, 1\}^2} P\{y_{t-1} = b_1, y_t = b_2| \gamma_{t-1}=a_1, \gamma_t = a_2\}P\{\gamma_{t-1}=a_1, \gamma_t = a_2\}=\frac{1}{2}\cdot\frac{1}{2}(1+\varepsilon)(1-\delta)^2+\theta\delta(1-\theta) + \theta^2\delta^2.$\\
+	Для случаев (\ref{0:1})-(\ref{0:0}) доказывается аналогично.	
+\end{proof}
+Для формул (\ref{1:1})-(\ref{0:0}) справедливо условие нормировки:\\
+$ \sum_{(a_1, a_2)\in \{0, 1\}^2}P\{y_{t-1}=a_1, y_t=a_2\} =1.$\\
+Далее полагаем, что $\theta=\frac{1}{2}$.\\
+Тогда: 
+\begin{equation}
+P\{y_{t-1}=1, y_t = 1 \}=P\{y_{t-1}=0, y_t = 0 \}= \delta^2\frac{\varepsilon}{4}-\delta\frac{\varepsilon}{2}+\frac{1+\varepsilon}{4};
+\end{equation}
+\begin{equation}
+P\{y_{t-1}=1, y_t = 0 \}=P\{y_{t-1}=0, y_t = 1 \}= -\delta^2\frac{\varepsilon}{4}+\delta\frac{\varepsilon}{2}+\frac{1-\varepsilon}{4}.
+\end{equation}
+\begin{definition}
+	\cite{duhin} Дискретный стационарный источник называется марковским источником порядка m, если для любого l(l>m) и любой последовательности $c_l=(a_{i_1}, ..., a_{i_l})$ выполняется: $P\{a_{i_l}|a_{i_{l-1}}, ..., a_{i_1}\} = P\{a_{i_l}|a_{i_{l-1}}, ..., a_{i_{l-m+1}}\}.$
+\end{definition}
+\begin{definition}
+	\cite{duhin} Величина: 
+	$H^{(k)} = \sum_{\{c_k\}}P\{a_{i_1}, ..., a_{i_k}\} \log{P\{a_{i_k}|a_{i_{k-1}} ..., a_{i_1}\} }$ называется шаговой энтропией марковского источника порядка k.
+\end{definition}
+
+Введем понятие энтропии на знак для l-граммы:\\
+\begin{equation}
+	\label{entropy L}
+	H_l(\delta) = -\frac{1}{l} \sum_{(a_1, ..., a_l)\in \{0, 1\}}P\{y_{t-l}=a_1,..., y_{t-1}=a_l\}\log{P\{y_{t-l}=a_1, ..., y_{t-1}=a_l\}}.
+\end{equation}
+При $\delta = 0$ стегоконтейнер $y$ совпадает с контейнером $x$, тогда:\\
+\begin{equation}
+	H_l(0)=-\frac{1}{l}(H\{x_1\}+(l-1)H\{x_2|x_1\});
+\end{equation}
+\begin{equation}
+\lim_{l \to \infty}H_l(0)= \lim_{l \to \infty}-\frac{1}{l}(H\{x_1\}+(l-1)H\{x_2|x_1\}) = H\{x_2|x_1\}.
+\end{equation}
+
+Рассмотрим случайную величину $\xi \in B=\{b_1,...,b_m\}$, заданную  на вероятностном пространстве $(\Omega,\mathcal{F},\mathcal{P} )$, $P\{\xi=b_i\}=p_i$.
+
+\begin{definition} \cite{duhin} 
+Величина 
+\begin{equation}\label{own:information}I\{b_i\}=-\log p_i
+\end{equation}
+ называется собственной информацией, содержащейся в исходе $b_i \in B$. 
+\end{definition}
+Велиина $I\{b_i\}$ изменяется от нуля в случае
+реализации достоверного исхода до бесконечности, когда $p(b_i)=p_i\rightarrow 0$.
+Величину $I\{b_i\}$ можно интерпретировать как априорную неопределённость события $\{\xi=b_i\}$.
+
+Случайная величина $I\{\xi\}$ имеет математическое ожидание
+\begin{equation}
+EI\{\xi\}=-\sum_{b_i \in B}p_i\log p_i.
+\end{equation}
+
+\begin{definition}
+	Величина $EI\{\xi\}$ называется средней собственной информацией.
+\end{definition}
+Cредняя собственная информация равна энтропии: $EI\{\xi\}=H\{\xi\}$.
+
+Для представления функции логарифма воспользуемся формулой Маклорена первого порядка:
+\begin{equation}\label{macklaren}
+f(\delta)=f(\delta_0)+(\delta-\delta_0)f'(\delta_0)+o((\delta-\delta_0)^2).
+\end{equation}
+
+Для краткости, в обозначении функции $\log$ будем использовать основание $b$. 
+
+Согласно (\ref{macklaren}) в точке $\delta=0$ справедливо асимптотическое разложение 1-го порядка:
+\begin{gather*}
+\log_b(a_0(\varepsilon)+\delta a_1(\varepsilon) + \delta^2 a_2(\varepsilon) + o(\delta^2)) = \\ =
+\log a_0(\varepsilon)+\delta \left(\log(a_0(\varepsilon)+\delta a_1(\varepsilon) + \delta^2 a_2(\varepsilon) + o(\delta^2))\right)'|_{\delta=0} + o(\delta)= \\=
+\log a_0(\varepsilon) +\delta \frac{1}{\ln b}\frac{a_1(\varepsilon)}{a_0(\varepsilon)}+o(\delta).
+\end{gather*}
+
+Учитывая (\ref{macklaren}), найдем асимптотические выражения при $\delta \rightarrow 0$ для собственной информации $I\{y_{t-1}=i_1, y_t = i_2 \}, i_1,i_2 \in \{0,1\}$:
+\begin{gather*}
+	I\{y_{t-1}=0, y_t = 0 \}=I\{y_{t-1}=1, y_t = 1 \}= -\log(\frac{1}{4}(1+\varepsilon)(1-\delta)^2+\frac{1}{2}\delta(1-\delta)+\frac{1}{4}\delta^2) =\\=
+ -\log \frac{1+\varepsilon}{4} + \delta \frac{1}{\ln b}\frac{2\varepsilon}{1+\varepsilon} + o(\delta);
+\\
+I\{y_{t-1}=0, y_t = 1 \}=I\{y_{t-1}=1, y_t = 0 \}= -\log(\frac{1}{4}(1-\varepsilon)(1-\delta)^2+\frac{1}{2}\delta(1-\delta)+\frac{1}{4})\delta^2) =\\= 
+-\log \frac{1-\varepsilon}{4} - \delta \frac{1}{\ln b}\frac{2\varepsilon}{1-\varepsilon} + o(\delta).
+\end{gather*}
+
+\begin{lemma}
+		Если имеет место монобитная модель вкраплений (\ref{container:eq})-(\ref{input:rule}), то для энтропии при $l=2$ справедливо асимптотическое разложение 1-го порядка
+	\begin{equation}
+	H_2(\delta) = H_2(0) + 2\delta\varepsilon\log\frac{1+\varepsilon}{1-\varepsilon}+O(\delta^2).
+	\end{equation}
+\end{lemma}
+\begin{proof}
+	$H_2(\delta)= -( P\{y_{t-1}=0, y_t = 0\}\log(P\{y_{t-1}=0, y_t = 0\}) + P\{y_{t-1}=0, y_t = 1\}\log(P\{y_{t-1}=0, y_t = 1\}) +P\{y_{t-1}=1, y_t = 0\}\log(P\{y_{t-1}=1, y_t = 0\}) +P\{y_{t-1}=1, y_t = 1\}\log(P\{y_{t-1}=1, y_t = 1\})) = -2 (P\{y_{t-1}=0, y_t = 0\}\log(P\{y_{t-1}=0, y_t = 0\}) +P\{y_{t-1}=0, y_t = 0\}\log(P\{y_{t-1}=0, y_t = 1\}) )=-2((\delta^2\frac{\varepsilon}{4}-\delta\frac{\varepsilon}{2}+\frac{1+\varepsilon}{4})(-\log(\frac{1+\varepsilon}{4})+ \delta \frac{1}{\ln b}\cdot \frac{2\varepsilon}{1+\varepsilon}+o(\delta^2)) + (-\delta^2\frac{\varepsilon}{4}+\delta\frac{\varepsilon}{2}+\frac{1-\varepsilon}{4})(-\log(\frac{1-\varepsilon}{4}) - \delta \frac{1}{\ln b}\cdot \frac{2\varepsilon}{1-\varepsilon}+o(\delta^2)))=\frac{1}{2}(-(1+\varepsilon) \log(\frac{1+\varepsilon}{4}) - (1-\varepsilon)\log(\frac{1-\varepsilon}{4}) + 2\delta\varepsilon\log(\frac{1+\varepsilon}{1-\varepsilon})))+O(\delta^2) =H_2(0) + 2\delta\varepsilon\log(\frac{1+\varepsilon}{1-\varepsilon})))+O(\delta^2).$
+\end{proof}
+
+\begin{definition}\cite{duhin}
+	Величина $\lim_{k\to \infty}H^{(k)}= \lim_{k\to \infty}H_{k}=H_{\infty} \geqslant 0$  называется энтропий марковского источника, где $H_{k}$ - энтропия на знак.
+\end{definition}
+	
+	Рассмотрим  условные вероятности появления трехграммы $(0,0,0)$ при условии всевозможных стегоключей.
+	
+	$P\{y_{i-1} = 0, y_i = 0, y_{i+1} = 0\} =  (1-\delta)^3P\{y_{i-1} = 0, y_i = 0, y_{i+1} = 0 |\gamma_{i-1}=0,\gamma_i=0,\gamma_{i+1}=0\} +\newline + 
+	\delta(1-\delta)^2 (P\{y_{i-1} = 0, y_i = 0, y_{i+1} = 0 |\gamma_{i-1}=1,\gamma_i=0,\gamma_{i+1}=0\} + P\{y_{i-1} = 0, y_i = 0, y_{i+1} = 0 |\gamma_{i-1}=0,\gamma_i=1,\gamma_{i+1}=0\} + P\{y_{i-1} = 0, y_i = 0, y_{i+1} = 0 |\gamma_{i-1}=0,\gamma_i=0,\gamma_{i+1}=1\})+\newline 
+	+\delta^2(1-\delta) (P\{y_{i-1} = 0, y_i = 0, y_{i+1} = 0 |\gamma_{i-1}=1,\gamma_i=1,\gamma_{i+1}=0\}  + P\{y_{i-1} = 0, y_i = 0, y_{i+1} = 0 |\gamma_{i-1}=0,\gamma_i=1,\gamma_{i+1}=1\} + P\{y_{i-1} = 0, y_i = 0, y_{i+1} = 0 |\gamma_{i-1}=1,\gamma_i=0,\gamma_{i+1}=1\}) + \newline 
+	+ \delta^3 (P\{y_{i-1} = 0, y_i = 0, y_{i+1} =0 | \gamma_{i-1}=1,\gamma_i=1,\gamma_{i+1}=1\}).$\newline
+	
+	
+	
+		$P\{y_{i-1} = 0, y_i = 0, y_{i+1} = 0|\gamma_1=0,\gamma_2=0,\gamma_3=0\} = P\{x_{i-1} = 0, x_i = 0, x_{i+1} = 0\} = P\{x_{i-1} = 0\}P\{x_i=0, x_{i+1}=0 | x_{i-1} = 0\} = P\{x_{i-1} = 0\}P\{x_i=0\}P\{ x_{i+1}=0 | x_{i} = 0\}  = \frac{1}{2}\cdot\frac{1}{2}(1+\varepsilon)\cdot\frac{1}{2}(1+\varepsilon)=\frac{1}{8}(1+\varepsilon)^2;$\newline
+		
+		$P\{y_{i-1} = 0, y_i = 0, y_{i+1} = 0|\gamma_1=1,\gamma_2=0,\gamma_3=0\} = P\{\xi = 0, x_i = 0, x_{i+1} = 0\} = P\{\xi = 0\}P\{x_i=0, x_{i+1}=0 \} = P\{\xi = 0\}P\{x_i=0\}P\{ x_{i+1}=0 | x_{i} = 0\}  = \frac{1}{2}\cdot\frac{1}{2}(1+\varepsilon)\cdot\frac{1}{2}=\frac{1}{8}(1+\varepsilon);$\newline 
+		
+		$P\{y_{i-1} = 0, y_i = 0, y_{i+1} = 0|\gamma_1=0,\gamma_2=1,\gamma_3=0\} = P\{x_{i-1} = 0, \xi = 0, x_{i+1} = 0\} = P\{\xi = 0\}P\{x_{i-1}=0, x_{i+1}=0 \}  = \frac{1}{2}\cdot\frac{1}{2}\cdot\frac{1}{2}(1+\varepsilon^2)=\frac{1}{8}(1+\varepsilon^2);$\newline
+		
+		
+		$P\{y_{i-1} = 0, y_i = 0, y_{i+1} = 0|\gamma_1=0,\gamma_2=0,\gamma_3=1\} = P\{x_{i-1} = 0, x_i = 0, \xi = 0\} = P\{\xi = 0\}P\{x_{i-1}=0, x_{i}=0 \}  = \frac{1}{2}\cdot\frac{1}{2}\cdot\frac{1}{2}(1+\varepsilon)=\frac{1}{8}(1+\varepsilon);$\newline
+		
+		$P\{y_{i-1} = 0, y_i = 0, y_{i+1} = 0|\gamma_1=0,\gamma_2=1,\gamma_3=1\} = P\{y_{i-1} = 0, y_i = 0, y_{i+1} = 0|\gamma_1=1,\gamma_2=0,\gamma_3=1\} =
+		P\{y_{i-1} = 0, y_i = 0, y_{i+1} = 0|\gamma_1=1,\gamma_2=1,\gamma_3=0\} =
+		P\{y_{i-1} = 0, y_i = 0, y_{i+1} = 0|\gamma_1=1,\gamma_2=1,\gamma_3=1\} = P\{\xi = 0, \xi = 0, \xi = 0\} = P\{\xi = 1\}P\{x_{i-1}=1\}P\{x_{i}=0 \}  = \frac{1}{2}\cdot\frac{1}{2}\cdot\frac{1}{2} = \frac{1}{8};$\newline
+		
+	$P\{y_{i-1} = 0, y_i = 0, y_{i+1} = 0\} =  \frac{1}{8}\bigr(\varepsilon(\varepsilon+2)\delta^2 - 2\varepsilon(\varepsilon+1)\delta + (1+\varepsilon)^2 \bigr).$\newline
+
+	Найдем вероятности появления всевозможных трехграмм в стегоконтейнере $\{y_t\}$:
+	\begin{gather*}
+	P\{y_{i-1} = 1, y_i = 1, y_{i+1} = 1\} = P\{y_{i-1} = 0, y_i = 0, y_{i+1} = 0\}=\\=\tfrac{1}{8}\bigr(\varepsilon(\varepsilon+2)\delta^2 - 2\varepsilon(\varepsilon+2)\delta + (1+\varepsilon)^2 \bigr),\\
+	P\{y_{i-1} = 1, y_i = 1, y_{i+1} = 0\} = P\{y_{i-1} = 0, y_i = 0, y_{i+1} = 1\}= P\{y_{i-1} = 0, y_i = 1, y_{i+1} = 1\} =\\= P\{y_{i-1} = 1, y_i = 0, y_{i+1} = 0\}   =\tfrac{1}{8}\bigr(-\varepsilon^2\delta^2 + 2\varepsilon^2\delta  -\varepsilon^2 + 1\bigr), \\
+	P\{y_{i-1} = 1, y_i = 0, y_{i+1} = 1\} = P\{y_{i-1} = 0, y_i = 1, y_{i+1} = 0\}=\\=\tfrac{1}{8}\bigr(\varepsilon(\varepsilon-2)\delta^2 - 2\varepsilon(\varepsilon-2)\delta + (1-\varepsilon)^2 \bigr).
+	\end{gather*}
+	
+	\begin{theorem}
+		Если имеет место монобитная модель вкраплений (\ref{container:eq})-(\ref{input:rule}) , то для энтропии при $l=3$ справедливо асимптотическое разложение 1-го порядка:
+	\begin{equation}
+		H_3(\delta)=H_3(0)+2\varepsilon\delta \log\frac{1+\varepsilon}{1-\varepsilon}+ O(\delta^2);
+	\end{equation}
+		собственная информация имеет вид:
+		\begin{gather*}
+		I\{y_{i-1} = 0, y_i = 0, y_{i+1} = 0\}=-\log\frac{(1+\varepsilon)^2}{8}+\delta\frac{1}{\ln b}\cdot\frac{2\varepsilon^2+4\varepsilon}{(1+\varepsilon)^2} + O(\delta^2), \\
+		I\{y_{i-1} = 1, y_i = 0, y_{i+1} = 0\}= I\{y_{i-1} = 0, y_i = 0, y_{i+1} = 1\}=\\=
+		-\log\frac{1-\varepsilon^2}{8}-\delta\frac{1}{\ln b}\cdot\frac{2\varepsilon^2}{1-\varepsilon^2} + O(\delta^2),\\
+		I\{y_{i-1} = 0, y_i = 1, y_{i+1} = 0\}= -\log\frac{(1-\varepsilon)^2}{8}+\delta\frac{1}{\ln b}\cdot\frac{2\varepsilon^2-4\varepsilon}{(1-\varepsilon)^2} + O(\delta^2);\\
+		I\{y_{i-1} = j_{1}, y_i = j_2, y_{i+1} = j_{3}\}=I\{y_{i-1} = 1-j_{1}, y_i = 1-j_2, y_{i+1} = 1-j_{3}\}, ~j_1,j_2,j_3 \in \{0,1\}.
+		\end{gather*}		
+	\end{theorem}
+		\begin{proof}
+		Подставляя в (\ref{macklaren}) найденные выражения для вероятностей трехграмм, получим асимптотические выражения для собственной информации.
+
+		Используя выражения для собственной информации, получим:\\
+			$H_3(\delta)=-2(\frac{1}{8}\bigr(\varepsilon(\varepsilon+2)\delta^2 - 2\varepsilon(\varepsilon+2)\delta + (1+\varepsilon)^2 \bigr)( \log(\frac{(1+\varepsilon)^2}{8})+\delta\frac{1}{\ln b}\cdot\frac{-2\varepsilon^2-4\varepsilon}{(1+\varepsilon)^2}) + 2\frac{1}{8}\bigr(-\varepsilon^2\delta^2 + 2\varepsilon^2\delta  -\varepsilon^2 + 1\bigr)(\log(\frac{1-\varepsilon^2}{8})+\delta\frac{1}{\ln b}\cdot\frac{2\varepsilon^2}{1-\varepsilon^2}) + \frac{1}{8}\bigr(\varepsilon(\varepsilon-2)\delta^2 - 2\varepsilon(2+\varepsilon)\delta + (1-\varepsilon)^2 \bigr)(\log(\frac{(1-\varepsilon)^2}{8})+\delta\frac{1}{\ln b}\cdot\frac{-2\varepsilon^2+4\varepsilon}{(1-\varepsilon)^2})) + O(\delta^2) =-((1-\varepsilon)\log(1-\varepsilon) + (1+\varepsilon)\log(1+\varepsilon)+\log(\frac{1}{8}) + 2\varepsilon\delta \log\frac{1-\varepsilon}{1+\varepsilon})+ O(\delta^2)=H_3(0)- 2\varepsilon\delta \log\frac{1-\varepsilon}{1+\varepsilon}+ O(\delta^2).$
+		\end{proof}
+		
+		Рассмотрим  условные вероятности появления четырехграммы $(0,0,0,0)$ при условии всевозможных стегоключей.
+		
+		$P\{y_{i-1} = 0, y_i = 0, y_{i+1} = 0, y_{i+2} = 0\} =  (1-\delta)^4P\{y_{i-1} = 0, y_i = 0, y_{i+1} = 0, y_{i+2} = 0 |\gamma_{i-1}=0,\gamma_i=0,\gamma_{i+1}=0, \gamma_{i+2} = 0\} + 
+		\delta(1-\delta)^3\biggr(P\{y_{i-1} = 0, y_i = 0, y_{i+1} = 0, y_{i+2} = 0 |\gamma_{i-1}=0,\gamma_i=0,\gamma_{i+1}=0, \gamma_{i+2} = 1\} +
+		P\{y_{i-1} = 0, y_i = 0, y_{i+1} = 0, y_{i+2} = 0 |\gamma_{i-1}=0,\gamma_i=0,\gamma_{i+1}=1, \gamma_{i+2} = 0\} +
+		P\{y_{i-1} = 0, y_i = 0, y_{i+1} = 0, y_{i+2} = 0 |\gamma_{i-1}=0,\gamma_i=1,\gamma_{i+1}=0, \gamma_{i+2} = 0\} +
+		P\{y_{i-1} = 0, y_i = 0, y_{i+1} = 0, y_{i+2} = 0 |\gamma_{i-1}=1,\gamma_i=0,\gamma_{i+1}=0, \gamma_{i+2} = 0\}\biggr) +
+		\delta^2(1-\delta)^2 \biggr(P\{y_{i-1} = 0, y_i = 0, y_{i+1} = 0, y_{i+2} = 0 |\gamma_{i-1}=0,\gamma_i=0,\gamma_{i+1}=1, \gamma_{i+2} = 1\} +
+		P\{y_{i-1} = 0, y_i = 0, y_{i+1} = 0, y_{i+2} = 0 |\gamma_{i-1}=0,\gamma_i=1,\gamma_{i+1}=1, \gamma_{i+2} = 0\} +
+		P\{y_{i-1} = 0, y_i = 0, y_{i+1} = 0, y_{i+2} = 0 |\gamma_{i-1}=1,\gamma_i=1,\gamma_{i+1}=0, \gamma_{i+2} = 0\} +
+		P\{y_{i-1} = 0, y_i = 0, y_{i+1} = 0, y_{i+2} = 0 |\gamma_{i-1}=1,\gamma_i=0,\gamma_{i+1}=1, \gamma_{i+2} = 0\}+
+		P\{y_{i-1} = 0, y_i = 0, y_{i+1} = 0, y_{i+2} = 0 |\gamma_{i-1}=0,\gamma_i=1,\gamma_{i+1}=0, \gamma_{i+2} = 1\}+
+		P\{y_{i-1} = 0, y_i = 0, y_{i+1} = 0, y_{i+2} = 0 |\gamma_{i-1}=1,\gamma_i=0,\gamma_{i+1}=0, \gamma_{i+2} = 1\}\biggr)
+		+\delta^3(1-\delta) \biggr(P\{y_{i-1} = 0, y_i = 0, y_{i+1} = 0, y_{i+2} = 0 |\gamma_{i-1}=0,\gamma_i=1,\gamma_{i+1}=1, \gamma_{i+2} = 1\} +
+		P\{y_{i-1} = 0, y_i = 0, y_{i+1} = 0, y_{i+2} = 0 |\gamma_{i-1}=1,\gamma_i=0,\gamma_{i+1}=1, \gamma_{i+2} = 1\} +
+		P\{y_{i-1} = 0, y_i = 0, y_{i+1} = 0, y_{i+2} = 0 |\gamma_{i-1}=1,\gamma_i=1,\gamma_{i+1}=0, \gamma_{i+2} = 1\} +
+		P\{y_{i-1} = 0, y_i = 0, y_{i+1} = 0, y_{i+2} = 0 |\gamma_{i-1}=1,\gamma_i=1,\gamma_{i+1}=1, \gamma_{i+2} = 0\}\biggr)
+		+ \delta^4 (	P\{y_{i-1} = 0, y_i = 0, y_{i+1} = 0, y_{i+2} = 0 |\gamma_{i-1}=1,\gamma_i=1,\gamma_{i+1}=1, \gamma_{i+2} = 1\}).$\newline
+		
+		$P\{y_{i-1} = 0, y_i = 0, y_{i+1} = 0, y_{i+2} = 0 |\gamma_{i-1}=0,\gamma_i=0,\gamma_{i+1}=0, \gamma_{i+2} = 0\}=\frac{(1+\varepsilon)^3}{16};$\newline
+		
+		$P\{y_{i-1} = 0, y_i = 0, y_{i+1} = 0, y_{i+2} = 0 |\gamma_{i-1}=1,\gamma_i=0,\gamma_{i+1}=0, \gamma_{i+2} = 0\}=P\{y_{i-1} = 0, y_i = 0, y_{i+1} = 0, y_{i+2} = 0 |\gamma_{i-1}=0,\gamma_i=0,\gamma_{i+1}=0, \gamma_{i+2} = 1\}=\frac{(1+\varepsilon)^2}{16};$\newline
+		
+		$P\{y_{i-1} = 0, y_i = 0, y_{i+1} = 0, y_{i+2} = 0 |\gamma_{i-1}=0,\gamma_i=1,\gamma_{i+1}=0, \gamma_{i+2} = 0\}=P\{y_{i-1} = 0, y_i = 0, y_{i+1} = 0, y_{i+2} = 0 |\gamma_{i-1}=0,\gamma_i=0,\gamma_{i+1}=1, \gamma_{i+2} = 0\} =\frac{(1+\varepsilon)(1+\varepsilon^2)}{16};$\newline
+		
+		$P\{y_{i-1} = 0, y_i = 0, y_{i+1} = 0, y_{i+2} = 0 |\gamma_{i-1}=1,\gamma_i=1,\gamma_{i+1}=0, \gamma_{i+2} = 0\}=P\{y_{i-1} = 0, y_i = 0, y_{i+1} = 0, y_{i+2} = 0 |\gamma_{i-1}=0,\gamma_i=0,\gamma_{i+1}=0, \gamma_{i+2} = 1\}=P\{y_{i-1} = 0, y_i = 0, y_{i+1} = 0, y_{i+2} = 0 |\gamma_{i-1}=1,\gamma_i=0,\gamma_{i+1}=0, \gamma_{i+2} = 1\}=P\{y_{i-1} = 0, y_i = 0, y_{i+1} = 0, y_{i+2} = 0 |\gamma_{i-1}=0,\gamma_i=0,\gamma_{i+1}=1, \gamma_{i+2} = 1\}=\frac{1+\varepsilon}{16};$\newline
+		
+		$P\{y_{i-1} = 0, y_i = 0, y_{i+1} = 0, y_{i+2} = 0 |\gamma_{i-1}=0,\gamma_i=1,\gamma_{i+1}=0, \gamma_{i+2} = 1\}=P\{y_{i-1} = 0, y_i = 0, y_{i+1} = 0, y_{i+2} = 0 |\gamma_{i-1}=1,\gamma_i=0,\gamma_{i+1}=1, \gamma_{i+2} = 0\}=\frac{1+\varepsilon^2}{16};$\newline
+		
+		$P\{y_{i-1} = 0, y_i = 0, y_{i+1} = 0, y_{i+2} = 0 |\gamma_{i-1}=1,\gamma_i=1,\gamma_{i+1}=1, \gamma_{i+2} = 0\}=P\{y_{i-1} = 0, y_i = 0, y_{i+1} = 0, y_{i+2} = 0 |\gamma_{i-1}=1,\gamma_i=1,\gamma_{i+1}=0, \gamma_{i+2} = 1\}=P\{y_{i-1} = 0, y_i = 0, y_{i+1} = 0, y_{i+2} = 0 |\gamma_{i-1}=1,\gamma_i=0,\gamma_{i+1}=1, \gamma_{i+2} = 1\}=P\{y_{i-1} = 0, y_i = 0, y_{i+1} = 0, y_{i+2} = 0 |\gamma_{i-1}=0,\gamma_i=1,\gamma_{i+1}=1, \gamma_{i+2} =P\{y_{i-1} = 0, y_i = 0, y_{i+1} = 0, y_{i+2} = 0 |\gamma_{i-1}=1,\gamma_i=1,\gamma_{i+1}=1, \gamma_{i+2}= 1\}=\frac{1}{16};$\newline
+
+		 $P\{y_{i-1} = 0, y_i = 0, y_{i+1} = 0, y_{i+2} = 0 \}=P\{y_{i-1} = 1, y_i = 1, y_{i+1} = 1, y_{i+2} = 1 \}= \tfrac{1}{16}\bigr(\delta^4\varepsilon^2+\delta^3(-4\varepsilon^2)+\delta^2(\varepsilon^3+8\varepsilon^2+3\varepsilon)+\delta(-2\varepsilon^3-8\varepsilon^2-6\varepsilon)+\varepsilon^3+3\varepsilon^2+3\varepsilon+1\bigr).$\\
+		Найдем вероятности появления всевозможных четырехграмм в стегоконтейнере $\{y_t\}$:
+		\begin{gather*}
+		P\{y_{i-1} = 0, y_i = 0, y_{i+1} = 0, y_{i+2} = 1 \}=P\{y_{i-1} = 1, y_i = 1, y_{i+1} = 1, y_{i+2} = 0 \}=\\=
+		P\{y_{i-1} = 1, y_i = 0, y_{i+1} = 0, y_{i+2} = 0 \}=P\{y_{i-1} = 0, y_i = 1, y_{i+1} = 1, y_{i+2} = 1 \}=\\= \tfrac{1}{16}\bigr(\delta^4(-\varepsilon^2)+\delta^3\cdot4\varepsilon^2+\delta^2(-\varepsilon^3-6\varepsilon^2+\varepsilon)+\delta(2\varepsilon^3+4\varepsilon^2-2\varepsilon)-\varepsilon^3-\varepsilon^2+\varepsilon+1\bigr);\\
+		P\{y_{i-1} = 0, y_i = 1, y_{i+1} = 0, y_{i+2} = 0 \}=P\{y_{i-1} = 1, y_i = 0, y_{i+1} = 1, y_{i+2} = 1 \}=\\=
+		P\{y_{i-1} = 0, y_i = 0, y_{i+1} = 1, y_{i+2} = 0 \}=P\{y_{i-1} = 1, y_i = 1, y_{i+1} = 0, y_{i+2} = 1 \}=\\= \tfrac{1}{16}\bigr(\delta^4(-\varepsilon^2)+\delta^3\cdot4\varepsilon^2+\delta^2(\varepsilon^3-6\varepsilon^2-\varepsilon)+\delta(-2\varepsilon^3+4\varepsilon^2+2\varepsilon)+\varepsilon^3-\varepsilon^2-\varepsilon+1\bigr);\\
+		P\{y_{i-1} = 0, y_i = 0, y_{i+1} = 1, y_{i+2} = 1 \}=P\{y_{i-1} = 1, y_i = 1, y_{i+1} = 0, y_{i+2}=0 \}=\\= \tfrac{1}{16}\bigr(\delta^4\varepsilon^2+\delta^3(-4\varepsilon^2)+\delta^2(-\varepsilon^3+4\varepsilon^2+\varepsilon)+\delta(2\varepsilon^3-2\varepsilon)-\varepsilon^3-\varepsilon^2+\varepsilon+1\bigr);\\
+		P\{y_{i-1} = 0, y_i = 1, y_{i+1} = 1, y_{i+2} = 0 \}=P\{y_{i-1} = 1, y_i = 0, y_{i+1} = 0, y_{i+2} = 1 \}=\\= \tfrac{1}{16}\bigr(\delta^4\varepsilon^2+\delta^3(-4\varepsilon^2)+\delta^2(\varepsilon^3+4\varepsilon^2-\varepsilon)+\delta(-2\varepsilon^3+2\varepsilon)+\varepsilon^3-\varepsilon^2-\varepsilon+1\bigr);\\
+		P\{y_{i-1} = 1, y_i = 0, y_{i+1} = 1, y_{i+2} = 0 \}=P\{y_{i-1} = 0, y_i = 1, y_{i+1} = 0, y_{i+2} = 1 \}=\\= \tfrac{1}{16}\bigr(\delta^4\varepsilon^2+\delta^3(-4\varepsilon^2)+\delta^2(-\varepsilon^3+8\varepsilon^2-3\varepsilon)+\delta(2\varepsilon^3-8\varepsilon^2+6\varepsilon)-\varepsilon^3+3\varepsilon^2-3\varepsilon+1\bigr).
+		\end{gather*}
+			\begin{theorem}
+				Если имеет место монобитная модель вкраплений (\ref{container:eq})-(\ref{input:rule}) , то для энтропии при $l=4$ справедливо асимптотическое разложение 1-го порядка:
+				\begin{equation}
+			H_4(\delta)=H_4(0)+\frac{24\varepsilon\delta}{16} \log\frac{1+\varepsilon}{1-\varepsilon}+ O(\delta^2);
+			\end{equation}
+			собственная информация имеет вид:\\
+			\begin{gather*}
+			 I\{y_{i-1} = 0, y_i = 0, y_{i+1} = 0, y_{i+2} = 0 \}=I\{y_{i-1} = 1, y_i = 1, y_{i+1} = 1, y_{i+2} = 1 \}=\\= -\biggr(\log\frac{(1+\varepsilon)^3}{16} + \delta \frac{-2\varepsilon^3-8\varepsilon^2-6\varepsilon}{(1+\varepsilon)^3\ln b}\biggr) +O(\delta^2) ;\\
+			 I\{y_{i-1} = 0, y_i = 0, y_{i+1} = 0, y_{i+2} = 1 \}=I\{y_{i-1} = 1, y_i = 1, y_{i+1} = 1, y_{i+2} = 0 \}=\\=
+			 I\{y_{i-1} = 1, y_i = 0, y_{i+1} = 0, y_{i+2} = 0 \}=I\{y_{i-1} = 0, y_i = 1, y_{i+1} = 1, y_{i+2} = 1 \}=\\= -\biggr(\log\frac{(1-\varepsilon)(1+\varepsilon)^2}{16} + \delta \frac{2\varepsilon^3+4\varepsilon^2-2\varepsilon}{(1-\varepsilon)(1+\varepsilon)^2\ln b}\biggr) +O(\delta^2);\\
+			  I\{y_{i-1} = 0, y_i = 0, y_{i+1} = 1, y_{i+2} = 0 \}=I\{y_{i-1} = 1, y_i = 1, y_{i+1} = 0, y_{i+2} = 1 \}=\\=
+			  I\{y_{i-1} = 0, y_i = 1, y_{i+1} = 0, y_{i+2} = 0 \}=I\{y_{i-1} = 1, y_i = 0, y_{i+1} = 1, y_{i+2} = 1 \}=\\=
+			  -\biggr(\log\frac{(1-\varepsilon)^2(1+\varepsilon)}{16} + \delta \frac{-2\varepsilon^3+4\varepsilon^2+2\varepsilon}{(1-\varepsilon)^2(1+\varepsilon)\ln b}\biggr) +O(\delta^2);\\
+			  I\{y_{i-1} = 0, y_i = 0, y_{i+1} = 1, y_{i+2} = 1 \}=I\{y_{i-1} = 1, y_i = 1, y_{i+1} = 0, y_{i+2} = 0 \}=\\= -\biggr(\log\frac{(1-\varepsilon)(1+\varepsilon)^2}{16} + \delta \frac{2\varepsilon^3-2\varepsilon}{(1-\varepsilon)(1+\varepsilon)^2\ln b}\biggr) +O(\delta^2);    \\
+			  I\{y_{i-1} = 0, y_i = 1, y_{i+1} = 1, y_{i+2} = 0 \}=I\{y_{i-1} = 1, y_i = 0, y_{i+1} = 0, y_{i+2} = 1 \}=\\= -\biggr(\log\frac{(1-\varepsilon)^2(1+\varepsilon)}{16} + \delta \frac{-2\varepsilon^3+2\varepsilon}{(1-\varepsilon)^2(1+\varepsilon)\ln b}\biggr) +O(\delta^2);\\  
+			  I\{y_{i-1} = 1, y_i = 0, y_{i+1} = 1, y_{i+2} = 0 \}=I\{y_{i-1} = 0, y_i = 1, y_{i+1} = 0, y_{i+2} = 1 \}=\\= -\biggr(\log\frac{(1-\varepsilon)^3}{16} + \delta \frac{2\varepsilon^3-8\varepsilon^2+6\varepsilon}{(1-\varepsilon)^3\ln b}\biggr) +O(\delta^2).
+			  \end{gather*}
+		\end{theorem}
+		
+		\begin{proof}
+				Подставляя в (\ref{macklaren}) найденные выражения для вероятностей четырехграмм, получим асимптотические выражения для собственной информации. \\
+		Используя выражения для собственной информации, получим:
+	
+			$H_4(\delta)=-2\biggr(
+		\tfrac{1}{16}\bigr(\delta^4\varepsilon^2+\delta^3(-4\varepsilon^2)+\delta^2(\varepsilon^3+8\varepsilon^2+3\varepsilon)+\delta(-2\varepsilon^3-8\varepsilon^2-6\varepsilon)+\varepsilon^3+3\varepsilon^2+3\varepsilon+1\bigr)\bigr(\log\frac{(1+\varepsilon)^3}{16} + \delta \frac{-2\varepsilon^3-8\varepsilon^2-6\varepsilon}{(1+\varepsilon)^3\ln b} +O(\delta^2)\bigr) +
+			2\tfrac{1}{16}\bigr(\delta^4(-\varepsilon^2)+\delta^3\cdot4\varepsilon^2+\delta^2(-\varepsilon^3-6\varepsilon^2+\varepsilon)+\delta(2\varepsilon^3+4\varepsilon^2-2\varepsilon)-\varepsilon^3-\varepsilon^2+\varepsilon+1\bigr)\bigr(\log\frac{(1-\varepsilon)(1+\varepsilon)^2}{16} + \delta \frac{2\varepsilon^3+4\varepsilon^2-2\varepsilon}{(1-\varepsilon)(1+\varepsilon)^2\ln b} +O(\delta^2)\bigr) +
+			2\tfrac{1}{16}\bigr(\delta^4(-\varepsilon^2)+\delta^3\cdot4\varepsilon^2+\delta^2(\varepsilon^3-6\varepsilon^2-\varepsilon)+\delta(-2\varepsilon^3+4\varepsilon^2+2\varepsilon)+\varepsilon^3-\varepsilon^2-\varepsilon+1\bigr)\bigr(\log\frac{(1-\varepsilon)^2(1+\varepsilon)}{16} + \delta \frac{-2\varepsilon^3+4\varepsilon^2+2\varepsilon}{(1-\varepsilon)^2(1+\varepsilon)\ln b}+O(\delta^2)\bigr) +
+			\tfrac{1}{16}\bigr(\delta^4\varepsilon^2+\delta^3(-4\varepsilon^2)+\delta^2(-\varepsilon^3+4\varepsilon^2+\varepsilon)+\delta(2\varepsilon^3-2\varepsilon)-\varepsilon^3-\varepsilon^2+\varepsilon+1\bigr)\bigr(log\frac{(1-\varepsilon)(1+\varepsilon)^2}{16} + \delta \frac{2\varepsilon^3-2\varepsilon}{(1-\varepsilon)(1+\varepsilon)^2\ln b} +O(\delta^2)\bigr) +
+			\tfrac{1}{16}\bigr(\delta^4\varepsilon^2+\delta^3(-4\varepsilon^2)+\delta^2(\varepsilon^3+4\varepsilon^2-\varepsilon)+\delta(-2\varepsilon^3+2\varepsilon)+\varepsilon^3-\varepsilon^2-\varepsilon+1\bigr)\bigr(\log\frac{(1-\varepsilon)^2(1+\varepsilon)}{16} + \delta \frac{-2\varepsilon^3+2\varepsilon}{(1-\varepsilon)^2(1+\varepsilon)\ln b}+O(\delta^2)\bigr) +
+			\tfrac{1}{16}\bigr(\delta^4\varepsilon^2+\delta^3(-4\varepsilon^2)+\delta^2(-\varepsilon^3+8\varepsilon^2-3\varepsilon)+\delta(2\varepsilon^3-8\varepsilon^2+6\varepsilon)-\varepsilon^3+3\varepsilon^2-3\varepsilon+1\bigr)\bigr(\log\frac{(1-\varepsilon)^3}{16} + \delta \frac{2\varepsilon^3-8\varepsilon^2+6\varepsilon}{(1-\varepsilon)^3\ln b} +O(\delta^2)\bigr) 
+			\biggr) = 
+			\tfrac{(1+\varepsilon)^3}{16}\log\tfrac{(1+\varepsilon)^3}{16} + 3 \tfrac{(1+\varepsilon)^2(1-\varepsilon)}{16}\log\tfrac{(1+\varepsilon)^2(1-\varepsilon)}{16}+3\tfrac{(1+\varepsilon)(1-\varepsilon)^2}{16}\log\tfrac{(1+\varepsilon)(1-\varepsilon)^2}{16}+ \tfrac{(1-\varepsilon)^3}{16}\log\tfrac{(1-\varepsilon)^3}{16}+\frac{24\varepsilon\delta}{16} \log\frac{1+\varepsilon}{1-\varepsilon}+ O(\delta^2) = H_4(0)+\frac{24\varepsilon\delta}{16} \log\frac{1+\varepsilon}{1-\varepsilon}+ O(\delta^2).$
+		\end{proof}
+		
+		Оценим остаточный член для асимптотического выражения энтропии биграммы:
+		\begin{equation}
+		r_n(\delta)=\frac{f^{(n+1)}(\overline{\delta})}{(n+1)!}(\delta-\delta_0), где \overline{\delta} \in [\delta_0, \delta].
+		\end{equation}
+		Для асимптотического разложения 1-го порядка при $\delta_0=0$ остаточный член имеет вид:\\
+			\begin{equation}
+			r_n(\delta)=\frac{f''(\overline{\delta})}{2}\delta,\overline{\delta} \in [0, \delta].
+			\end{equation}
+			$(\log(P_{00}))''=\frac{-2\varepsilon(\delta^2\varepsilon-2\delta\varepsilon+\varepsilon-1)}{\ln b (\delta^2\varepsilon-2\delta\varepsilon+\varepsilon+1)^2};\newline
+			(\log(P_{01}))''=\frac{-2\varepsilon(\delta^2\varepsilon-2\delta\varepsilon+\varepsilon+1)}{\ln b (\delta^2\varepsilon-2\delta\varepsilon+\varepsilon-1)^2};\newline$
+			Тогда остаточный член для $\log(P_{00})=\log(P_{11})$ равен:\\
+			$r_{n_{00}}(\delta)=\frac{\delta}{2}\cdot \frac{-2\varepsilon(\delta^2\varepsilon-2\delta\varepsilon+\varepsilon-1)}{\ln b (\delta^2\varepsilon-2\delta\varepsilon+\varepsilon+1)^2}|_{\delta=\overline{\delta}}$\newline
+			Остаточный член для $\log(P_{10})=\log(P_{01})$ равен:\\
+				$r_{n_{10}}(\delta)=\frac{\delta}{2}\cdot \frac{-2\varepsilon(\delta^2\varepsilon-2\delta\varepsilon+\varepsilon+1)}{\ln b (\delta^2\varepsilon-2\delta\varepsilon+\varepsilon-1)^2}|_{\delta=\overline{\delta}}$\newline
+			Тогда остаточный член для энтропиии будет равен:\\
+			$R_n(\delta)=-2(P_{00}r_{n_{00}}(\delta)+P_{10}r_{n_{01}}(\delta))=-2\bigr((\delta^2\frac{\varepsilon}{4}-\delta\frac{\varepsilon}{2}+\frac{1+\varepsilon}{4})(\frac{\delta}{2}\cdot \frac{-2\varepsilon(\delta^2\varepsilon-2\delta\varepsilon+\varepsilon-1)}{\ln b (\delta^2\varepsilon-2\delta\varepsilon+\varepsilon+1)^2}|_{\delta=\overline{\delta}}) + (-\delta^2\frac{\varepsilon}{4}+\delta\frac{\varepsilon}{2}+\frac{1-\varepsilon}{4})(\frac{\delta}{2}\cdot \frac{-2\varepsilon(\delta^2\varepsilon-2\delta\varepsilon+\varepsilon+1)}{\ln b (\delta^2\varepsilon-2\delta\varepsilon+\varepsilon-1)^2}|_{\delta=\overline{\delta}})\bigr) $\newline
+			
+		
+\clearpage
+\section{Компьютерные эксперименты}
+На рисунках 1.2, 1.3, 1.4 изображены зависимости остаточных членов $H_2(\delta)-H_2^{as}(\delta)$, $H_4(\delta)-H_4^{as}(\delta)$, $H_4(\delta)-H_4^{as}(\delta)$ соответственно от величины доли вкрапления $\delta$. Из графика видно, что при меньшей доле вкрапления разница между асимптотическим выражением и точным значение энтропии стремится к нулю.
+
+\clearpage
+
+
+\begin{thebibliography}{0}
+	\bibitem{duhin}
+	А. А. Духин: Теория информации - М.: "Гелиос АРВ", 2007.
+	\bibitem{agranovskiy} 
+	А.В. Аграновский, А. В. Балакин: Стеганография, цифровые водяные знаки о стегоанализ - М.: Вузовская книга, 2009.
+	\bibitem{gribunin}
+	 В. Г. Грибунин, И. Н. Оков, И. В. Туринцев: Цифровая стеганография - М.: Солон-Прессб, 2002.
+	\bibitem{varnoskiy}
+	Н. П. Варновский, Е. А. Голубев, О. А. Логачев: Современные направления стеганографии. Математика и безопасность информационных технологий. Материалы конференции в МГУ 28-29 октября 2004 г., МЦМНО, М., 2005, с. 32-64.
+	\bibitem{harin}
+	Ю. С. Харин [и др.]: Криптология - Минск: БГУ, 2013.
+	\bibitem{vecherko}
+	Ю. С. Харин, Е. В. Вечерко "Статистическое оценивание параметров модели вкраплений в двоичную цепь Маркова", Дискрет. матем., 25:2 (2013), 135-148.
+\end{thebibliography}
+
+\end{document}

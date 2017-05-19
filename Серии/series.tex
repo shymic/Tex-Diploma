@@ -1,0 +1,74 @@
+ \documentclass[a4paper,12pt]{article}
+ 
+ \usepackage[utf8]{inputenc}
+ \usepackage[T1]{fontenc}
+ \usepackage[pdftex]{graphicx}
+ \usepackage[english, russian]{babel} % Языки: русский, английский
+ \usepackage[pdftex]{graphicx}
+ \usepackage{textcase}
+ \usepackage{amssymb,amsmath,amsthm,amsfonts}
+ \usepackage{geometry}
+ \geometry{a4paper,top=2cm,bottom=2cm,left=3cm,right=1cm}
+ 
+ \theoremstyle{plain}
+ 
+ \newtheorem{definition}{Определение}[section]
+ \newtheorem{lemma}{Лемма}[section]
+ %\newtheorem{proof}{Доказательство}
+ \newtheorem{theorem}{Теорема}[section]
+ %\numberwithin{equation}[section]
+ 
+ \begin{document}
+
+	Рассмотрим последовательность с вкраплениями, задавемую следующим образом:
+	\begin{equation}
+	\tau_s - \nu_s, 
+	\end{equation}
+где $\tau_s$ - длина серии, а $\nu_s$ - количество серий длины $\tau_s$
+
+Рассмотрим последовательность вида: $...00\underbrace{11...11}_{\text{$\tau$}}00...$:\\
+При $\tau=1$ вероятность на границе серий:\\
+ $P=\frac{1}{4}(1-\varepsilon)^2$  без вкраплений, \\
+  $P=\frac{1}{4}(1+\varepsilon)^2$  с вкраплениями. \\
+ При $\tau>1$:\\
+ $P=\frac{1}{2^{\tau+1}}(1-\varepsilon)^2(1+\varepsilon)^{\tau-1}, \tau=2,3,...,s$ - без вкраплений\\
+ $P=\frac{1}{2^{\tau+1}}(1-\varepsilon)^2(1+\varepsilon)^{\tau-1}, \tau=2,3,...,s$ - если вкраплённый бит граничный\\
+ $P=\frac{1}{2^{\tau+1}}(1-\varepsilon)^2(1+\varepsilon)^{\tau-3}(1+\varepsilon^2), \tau=3,...,s$ - если вкраплённый бит находится не на границе серии.\\
+Рассмотрим отдельно первую и последнюю серии полученной последовательности:\\
+$P=\frac{1}{2^{\tau+1}}(1-\varepsilon)(1+\varepsilon)^{\tau-1}, \forall\tau$- для первой серии без вкраплений,\\
+$P=\frac{1}{2^{\tau}}(1-\varepsilon)(1+\varepsilon)^{\tau-1}, \forall\tau$- для последней серии без вкраплений.\\
+Первая серия при наличии вкраплений:\\
+При $\tau=1$:\\
+$P=\frac{1}{4}$\\
+При $\tau=2$:\\
+$P=\frac{1}{8}(1-\varepsilon)$  если первый бит серии с вкраплением,\\
+$P=\frac{1}{8}(1-\varepsilon^2)$  если второй бит серии с вкраплением.\\
+При $\tau>2$:\\
+$P=\frac{1}{2^\tau+1}(1+\varepsilon)^{\tau-2}(1-\varepsilon)$ если первый бит серии с вкраплением\\
+$P=\frac{1}{2^\tau+1}(1+\varepsilon)^{\tau-2}(1-\varepsilon^2)$ если последний бит серии с вкраплением\\
+$P=\frac{1}{2^\tau+1}(1+\varepsilon)^{\tau-3}(1+\varepsilon^2)(1-\varepsilon)$ если вкроплённый бит находится не на границе серии\\
+Последняя серия при наличии вкраплений:\\
+При $\tau=1$:\\
+$P=\frac{1}{2}$\\
+При $\tau=2$:\\
+$P=\frac{1}{4}(1-\varepsilon^2)$  если первый бит серии с вкраплением,\\
+$P=\frac{1}{4}(1-\varepsilon)$  если второй бит серии с вкраплением.\\
+При $\tau>2$:\\
+$P=\frac{1}{2^\tau}(1-\varepsilon^2)(1+\varepsilon)^{\tau-2}$ если вкроплённый бит является первым в серии\\
+$P=\frac{1}{2^\tau}(1-\varepsilon)(1+\varepsilon)^{\tau-2}$ если вкроплённый бит является последним в серии\\
+$P=\frac{1}{2^\tau}(1-\varepsilon)(1+\varepsilon^2)(1+\varepsilon)^{\tau-3}$ если вкроплённый бит находится не на границе серии.\\
+Тогда:
+\begin{equation}
+P=(1-\delta)^TP_0+\delta(1-\delta)^{T-1}P_1+O(\delta^2)
+\end{equation}
+где $P_0$ - вероятность появления серий без вкраплений,  $P_1$ - вероятность появления серий с одним вкраплением.
+
+Тогда из вероятностей для серий без вкраплений получим:\\
+\begin{equation}
+ P_0=\biggl(\sum_{k=1}^s\frac{1}{2^{\tau_k+1}}(1+\varepsilon)^{\tau_k-1}(1-\varepsilon)\nu_k\biggr)\biggl(\sum_{k=1}^s\frac{1}{2^{\tau_k+1}}(1+\varepsilon)^{\tau_k-1}(1-\varepsilon)^2\nu_k\biggr)\biggl(\sum_{k=1}^s\frac{1}{2^{\tau_k}}(1+\varepsilon)^{\tau_k-1}(1-\varepsilon)\nu_k\biggr);
+\end{equation}
+
+
+ 
+\end{document}
+
