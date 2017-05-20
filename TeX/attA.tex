@@ -1,0 +1,969 @@
+\newpage
+\renewcommand{\thechapter}{\Alph{chapter}}
+\setcounter{chapter}{1}
+\setcounter{section}{0}
+\setcounter{subsection}{0}
+\setcounter{subsubsection}{0}
+
+\begin{flushright}
+\normalfont\Large\bfseries ПРИЛОЖЕНИE A
+\end{flushright}
+\addcontentsline{toc}{chapter}{ПРИЛОЖЕНИЕ А}
+%\addcontentsline{toc}{chapter}{Приложение А (Исходный код)}
+
+\begin{center}
+\normalfont\large\bfseries Исходный код основных частей разработанного приложения
+\end{center}
+
+\settocdepth{chapter}
+\section{Тесты перестановок}
+\label{attA:shuffl-section}
+\subsection{Основная логика теста}
+\label{attA:shuffl-general}
+\begin{small}
+%\lstset{style=sharpc}
+\begin{lstlisting}
+    public struct ShufflingTestReport
+    {
+        public string Name; //statistical score name
+        public int[] P; //ranks
+        public TestResult Result;
+    }
+
+    public static class ShufflingTest
+    {
+        public const int subsetNumber = 10;
+        public const int shuffleNumber = 1000;
+
+        private struct RankRecord
+        {
+            public string Name;
+            public int Subset;
+            public int Rank;
+        }
+
+        private static Object shufLock = new Object();
+
+        public static TestResult execute(int[] dataset, bool binary = false) {
+            List<ShufflingTestReport> report;
+            return execute(dataset, out report, binary);
+        }
+
+        public static TestResult execute(int[] dataset, out List<ShufflingTestReport> report, bool binary = false) {
+            Random randGen = new Random();
+            var ranks = new List<RankRecord>();
+            int subsetLength = dataset.Length / subsetNumber;
+            Console.Write("Shuffling test: Start... ");
+            double percentage = .0;
+            double stepPercent = 100.0 / subsetNumber;
+            for(int i = 0; i < subsetNumber; ++i) {
+                int[] subset = new int[subsetLength];
+                //bytes are copying
+                Buffer.BlockCopy(dataset, i * subsetLength << 2, subset, 0, subsetLength << 2);
+                //var subset = dataset.Skip(subsetLength * i).Take(subsetLength).ToArray();
+                var initScores = StatisticalScores.getScores(subset, binary);
+                //Shuffling
+                var shufScores = new List<Score>();
+                Action[] shufTasks = new Action[shuffleNumber];
+                for(int j = 0; j < shuffleNumber; ++j) {
+                    shufTasks[j] = new Action(() => {
+                        int[] subsetCopy = new int[subset.Length];
+                        lock(shufLock) {
+                            Utilities.shuffle(subset, randGen);
+                            Buffer.BlockCopy(subset, 0, subsetCopy, 0, subset.Length << 2);
+                        }
+                        var scores = StatisticalScores.getScores(subsetCopy, binary);
+                        lock(shufScores) {
+                            shufScores.AddRange(scores);
+                        }
+                    });
+                }
+                var parallelOptions = new ParallelOptions() {
+                    MaxDegreeOfParallelism = Utilities.CoreCount
+                };
+                Parallel.Invoke(parallelOptions, shufTasks);
+                percentage += stepPercent;
+                Console.Write("{0:0.}% ... ", percentage);
+                //Shuffled subsets scores lists
+                foreach(var initScore in initScores) {
+                    var scoreList = shufScores.Where(x => x.Name == initScore.Name).ToList();
+                    int lowerRank = scoreList.Where(x => x.Value < initScore.Value).Count();
+                    int upperRank = scoreList.Where(x => x.Value <= initScore.Value).Count();
+                    int r = shuffleNumber >> 1;
+                    int rank = upperRank < r ? upperRank : (lowerRank > r ? lowerRank : r);
+                    ranks.Add(new RankRecord {
+                        Name = initScore.Name,
+                        Subset = i,
+                        Rank = rank
+                    });
+                }
+            }
+            report = new List<ShufflingTestReport>();
+            TestResult result = TestResult.Passed;
+            foreach(var records in ranks.GroupBy(x => x.Name)) {
+                int[] curRanks = (from r in records
+                                  orderby r.Subset
+                                  select r.Rank).ToArray();
+                TestResult curResult = curRanks.Where(x => x < 50 || x > 950).Count() >= 8 ? TestResult.Failed : TestResult.Passed;
+                if(curResult == TestResult.Failed) {
+                    result = TestResult.Failed;
+                }
+                report.Add(new ShufflingTestReport {
+                    Name = records.First().Name,
+                    P = curRanks,
+                    Result = curResult
+                });
+            }
+            Console.WriteLine("\nShuffling test: Finished");
+            return result;
+        }
+    }
+\end{lstlisting}
+\end{small}
+
+
+
+
+\subsection{Вычисление статистических оценок}
+\begin{small}
+%\lstset{style=sharpc}
+\begin{lstlisting}
+    public struct Score
+    {
+        public string Name;
+        public decimal Value;
+    }
+
+    /// <summary>
+    /// introduces statistical scores used in IID tests
+    /// </summary>
+    public static class StatisticalScores
+    {
+        public static List<Score> getScores(int[] sample, bool binary = false) {
+            var scores = new List<Score>();
+            scores.AddRange(compressionScores(sample, binary));
+            scores.AddRange(runsScores(sample, binary));
+            scores.AddRange(excursionScores(sample, binary));
+            scores.AddRange(directionalRunsScores(sample, binary));
+            scores.AddRange(covarianceScores(sample, binary));
+            scores.AddRange(collisionScores(sample, binary));
+            return scores;
+        }
+\end{lstlisting}
+\end{small}
+
+\subsubsection{Оценка сжатия}
+\label{attA:shuffl-scores}
+\begin{small}
+%\lstset{style=sharpc}
+\begin{lstlisting}
+        /// <summary>
+        /// calculates compression score
+        /// </summary>
+        /// <param name="sample">sample to analyse</param>
+        /// <returns>length of the compressed string in bytes</returns>
+        public static Score[] compressionScores(int[] sample, bool binary = false) {
+            byte[] input = Encoding.UTF8.GetBytes(string.Join(",", sample));
+            //Console.WriteLine(str);
+            byte[] output = BZip2.Compress(input, 4096);
+            return new Score[]{
+                new Score{
+                    Name = "compression score",
+                    Value = (output != null) ? output.Length : -1
+                }
+            };
+        }
+\end{lstlisting}
+\end{small}
+
+\subsubsection{Оценки серий}
+\begin{small}
+%\lstset{style=sharpc}
+\begin{lstlisting}
+        /// <summary>
+        /// calculates Over/Under Runs Score
+        /// </summary>
+        /// <param name="sample">sample to analyse</param>
+        /// <returns>longest run and total number of runs</returns>
+        public static Score[] runsScores(int[] sample, bool binary = false) {
+            int[] median = null;
+            if(binary) {
+                median = new int[] { 0, 1 };
+            } else {
+                median = StandardFunctions.integerMedian(sample);
+            }
+            //false: value is under the median
+            //true: value is over the median
+            //skipped: value is equal to the median
+            List<bool> symbols = new List<bool>();
+            for(int i = 0; i < sample.Length; ++i) {
+                if(sample[i] < median[1]) {
+                    symbols.Add(false);
+                } else if(sample[i] > median[0]) {
+                    symbols.Add(true);
+                }
+            }
+            //first symbol produces first run of length 1
+            int currentRunLength = 1;
+            bool currentSymbol = symbols[0];
+            int longestRunLength = 1;
+            int runsNumber = 1;
+            /////////////////////////////////////////
+            for(int i = 1; i < symbols.Count; ++i) {
+                if(symbols[i] != currentSymbol) {
+                    //the next run
+                    if(currentRunLength > longestRunLength) {
+                        longestRunLength = currentRunLength;
+                    }
+                    currentRunLength = 1;
+                    ++runsNumber;
+                } else {
+                    //the same run
+                    ++currentRunLength;
+                }
+            }
+            if(currentRunLength > longestRunLength) {
+                longestRunLength = currentRunLength;
+            }
+            return new Score[]{
+                new Score{
+                    Name = "Longest run score",
+                    Value = longestRunLength
+                },
+                new Score{
+                    Name = "Runs number score",
+                    Value = runsNumber
+                }
+            };
+        }
+\end{lstlisting}
+\end{small}
+
+\subsubsection{Оценка кумулятивного отклонения}
+\begin{small}
+%\lstset{style=sharpc}
+\begin{lstlisting}
+        /// <summary>
+        /// calculates excursion score
+        /// </summary>
+        /// <param name="sample">sample to analyse</param>
+        /// <returns>maximal deviation from expected value</returns>
+        public static Score[] excursionScores(int[] sample, bool binary = false) {
+            if(sample.Length == 0) {
+                return new Score[]{
+                new Score{
+                    Name = "Excursion score",
+                    Value = 0
+                }
+            };
+            }
+            int initRemainder;
+            int initAverage = StandardFunctions.integerAverage(sample, out initRemainder);
+            //decimal average = initAverage + initRemainder * 100 / sample.Length;
+            decimal average = initAverage + (decimal)initRemainder / sample.Length;
+            decimal excursion = 0;
+            decimal maxAbsValue = 0;
+            for(int i = 0; i < sample.Length; ++i) {
+                excursion += sample[i] - average;
+                if(Math.Abs(excursion) > maxAbsValue) {
+                    maxAbsValue = Math.Abs(excursion);
+                }
+            }
+            return new Score[]{
+                new Score{
+                    Name = "Excursion score",
+                    Value = maxAbsValue
+                }
+            };
+        }
+\end{lstlisting}
+\end{small}
+
+\subsubsection{Оценки направленных серий}
+\begin{small}
+%\lstset{style=sharpc}
+\begin{lstlisting}
+        /// <summary>
+        /// calculates directional runs score
+        /// </summary>
+        /// <param name="sample">sample to analyse</param>
+        /// <returns>longest run, total number of runs, total number of 1 or -1 (which is greater)</returns>
+        public static Score[] directionalRunsScores(int[] sample, bool binary = false) {
+            if(binary){
+                int count = sample.Length >> 3;
+                int[] hammingWeights = new int[count];
+                for(int j = 0; j < count; ++j) {
+                    for(int i = 0; i < 8; ++i) {
+                        hammingWeights[j] += sample[(j << 3) + i];
+                    }
+                }
+                return directionalRunsScores(hammingWeights, false);
+            }
+            //creation of derivatives array
+            sbyte[] derivatives = new sbyte[sample.Length - 1];
+            int numberOfOnes = 0;
+            int numberOfMinusOnes = 0;
+            //было for(int i = 0; i < derivatives.Length - 1; ++i) {
+            for (int i = 0; i < derivatives.Length; ++i) {
+                if(sample[i] < sample[i + 1]) {
+                    derivatives[i] = 1;
+                    ++numberOfOnes;
+                } else if(sample[i] > sample[i + 1]) {
+                    derivatives[i] = -1;
+                    ++numberOfMinusOnes;
+                } else {
+                    derivatives[i] = 0;
+                }
+            }
+            //skipping leading 0
+            int currentPosition = 0;
+            while(derivatives[currentPosition] == 0 && currentPosition < derivatives.Length - 1) {
+                ++currentPosition;
+            }
+            if(derivatives[currentPosition] == 0) {
+                return new Score[]{
+                    new Score{
+                        Name = "Longest direct. run score",
+                        Value = 0
+                    },
+                    new Score{
+                        Name = "Direct. runs number score",
+                        Value = 0
+                    },
+                    new Score{
+                        Name = "Direct. runs -1/1 score",
+                        Value = 0
+                    }
+                };
+            }
+            ////////////////////////////////////////////////
+            int currentValue = derivatives[currentPosition];
+            ++currentPosition;
+            int runsNumber = 1;
+            int currentRunLength = 1;
+            int longestRunLength = 1;
+            for(; currentPosition < derivatives.Length; ++currentPosition) {
+                if(derivatives[currentPosition] == -currentValue) {
+                    //the next run (zeros do not break the run)
+                    ++runsNumber;
+                    if(currentRunLength > longestRunLength) {
+                        longestRunLength = currentRunLength;
+                    }
+                    currentRunLength = 1;
+                } else {
+                    //the same run
+                    ++currentRunLength;
+                }
+            }
+            if(currentRunLength > longestRunLength) {
+                longestRunLength = currentRunLength;
+            }
+            return new Score[]{
+                new Score{
+                    Name = "Longest direct. run score",
+                    Value = longestRunLength
+                },
+                new Score{
+                    Name = "Direct. runs number score",
+                    Value = runsNumber
+                },
+                new Score{
+                    Name = "Direct. runs -1/1 score",
+                    Value = Math.Max(numberOfOnes, numberOfMinusOnes)
+                }
+            };
+        }
+\end{lstlisting}
+\end{small}
+
+\subsubsection{Оценка ковариации}
+\begin{small}
+%\lstset{style=sharpc}
+\begin{lstlisting}
+        /// <summary>
+        /// calculates covariance score
+        /// </summary>
+        /// <param name="sample">sample to analyse</param>
+        /// <returns>covariance estimate</returns>
+        public static Score[] covarianceScores(int[] sample, bool binary = false) {
+            int average = StandardFunctions.integerAverage(sample);
+            int[] counts = new int[sample.Length - 1];
+            for(int i = 0; i < counts.Length; ++i) {
+                counts[i] = (sample[i] - average) * (sample[i + 1] - average);
+            }
+            return new Score[]{
+                new Score{
+                    Name = "Covariance score",
+                    Value = StandardFunctions.integerAverage(counts)
+                }
+            };
+        }
+\end{lstlisting}
+\end{small}
+
+\subsubsection{Оценки коллизий}
+\label{attA:shuffl-scoresEnd}
+\begin{small}
+%\lstset{style=sharpc}
+\begin{lstlisting}
+        /// <summary>
+        /// calculates collision score
+        /// </summary>
+        /// <param name="sample">sample to analyse</param>
+        /// <returns>number of values to collision: minimal, maximal and average</returns>
+        public static Score[] collisionScores(int[] sample, bool binary = false) {
+            var collisions = StandardFunctions.allCollisions(sample);
+            if(collisions.Count == 0) {
+                return new Score[]{
+                    new Score{
+                        Name = "Collision min score",
+                        Value = -1
+                    },
+                    new Score{
+                        Name = "Collision max score",
+                        Value = -1
+                    },
+                    new Score{
+                        Name = "Collision average score",
+                        Value = -1
+                    }
+                };
+            } else {
+                return new Score[]{
+                    new Score{
+                        Name = "Collision min score",
+                        Value = collisions.Min()
+                    },
+                    new Score{
+                        Name = "Collision max score",
+                        Value = collisions.Max()
+                    },
+                    new Score{
+                        Name = "Collision average score",
+                        Value = StandardFunctions.integerAverage(collisions)
+                    }
+                };
+            }
+        }
+    }
+\end{lstlisting}
+\end{small}
+Поиск коллизий:
+\begin{small}
+%\lstset{style=sharpc}
+\begin{lstlisting}
+        public static int nextCollision<T>(T[] dataset, int startPosition) {
+            var values = new HashSet<T>();
+            int currentPosition = startPosition;
+            while(currentPosition < dataset.Length) {
+                if(values.Contains(dataset[currentPosition])){
+                    //the next collision is found
+                    return currentPosition;
+                } else {
+                    values.Add(dataset[currentPosition]);
+                }
+                ++currentPosition;
+            }
+            //no collision is found
+            return -1;
+        }
+
+        public static List<int> allCollisions<T>(T[] dataset) {
+            var collisions = new List<int>();
+            int currentPosition = 0;
+            int nextPosition;
+            while((nextPosition = nextCollision(dataset, currentPosition)) != -1) {
+                collisions.Add(nextPosition - currentPosition + 1);
+                currentPosition = nextPosition + 1;
+            }
+            return collisions;
+        }
+\end{lstlisting}
+\end{small}
+\section{Хи-квадрат тесты}
+\subsection{Хи-квадрат тест для проверки независимости для небинарных данных}
+\label{attA:independence-chi}
+\begin{small}
+%\lstset{style=sharpc}
+\begin{lstlisting}
+    public static ChiSquaredTestReport independenceTest(int[] dataset) {
+            var report = new ChiSquaredTestReport{Name = "Chi-squared independence test"};
+            var probs = dataset.GroupBy(x => x).ToDictionary(x => x.Key, x => (double)x.Count() / dataset.Length);
+            double maxProb = probs.Max(x => x.Value);
+            double freqThreshold = 5.0 / dataset.Length;
+            var freqProbs = from x in probs
+                            where x.Value * maxProb >= freqThreshold
+                            select x;
+            int paramNumber = 1 + freqProbs.Count();
+            if(paramNumber == 1) {
+                report.Result = TestResult.Skipped;
+                report.Comment = "Not enough data";
+                return report;
+            }
+            var allPairs = from x in freqProbs
+                           from y in freqProbs
+                           select new KeyValuePair<Tuple<int, int>, double>(Tuple.Create(x.Key, y.Key), x.Value * y.Value * (dataset.Length - 1));
+            var expFreqPairs = (from pair in allPairs
+                                where pair.Value >= 5
+                                select pair)
+                                .ToDictionary(pair => pair.Key, pair => pair.Value);
+            int existRarePair = (expFreqPairs.LongCount() < (long)probs.Count * (long)probs.Count) ? 1 : 0;
+            double expRarePairsFreq = dataset.Length - 1 - expFreqPairs.Aggregate(0.0, (freq, pair) => freq + pair.Value);
+            int degreesOfFreedom = expFreqPairs.Count() + 1 - paramNumber;
+            if(degreesOfFreedom < 1) {
+                report.Result = TestResult.Skipped;
+                report.Comment = "Not enough data";
+                return report;
+            }
+            var neighbors = dataset.Skip(1).Zip(dataset, (next, prev) => Tuple.Create(prev, next));
+            var observedPairs = neighbors.GroupBy(pair => pair).ToDictionary(x => x.Key, x => x.Count());
+            var obsFreqPairs = (from pair in observedPairs
+                               where expFreqPairs.ContainsKey(pair.Key)
+                               select pair)
+                               .ToDictionary(pair => pair.Key, pair => pair.Value);
+            if(existRarePair > 0) {
+                int obsRarePairsFreq = (from pair in observedPairs
+                where !expFreqPairs.ContainsKey(pair.Key)
+                                        select pair)
+                                        .Aggregate(0, (freq, pair) => freq + pair.Value);
+                report.Stat = (expRarePairsFreq - obsRarePairsFreq) * (expRarePairsFreq - obsRarePairsFreq);
+                report.Stat /= expRarePairsFreq;
+            }
+            foreach(var pair in expFreqPairs) {
+                double obsFreq = obsFreqPairs.ContainsKey(pair.Key) ? obsFreqPairs[pair.Key] : 0.0;
+                obsFreq -= pair.Value;
+                report.Stat += obsFreq * obsFreq / pair.Value;
+            }
+            report.Df = expFreqPairs.Count - 1 + existRarePair;
+            report.P = SpecMath.chisqc(report.Df, report.Stat);
+            report.Result = report.P > confidenceLevel ? TestResult.Passed : TestResult.Failed;
+            return report;
+        }
+\end{lstlisting}
+\end{small}
+
+\subsection{Хи-квадрат тест для проверки одинаковой распределенности для небинарных данных}
+\label{attA:goodness-chi}
+\begin{small}
+%\lstset{style=sharpc}
+\begin{lstlisting}
+    public static List<ChiSquaredTestReport> goodnessOfFitTest(int[] dataset) {
+            var reportList = new List<ChiSquaredTestReport>(subsetNumber);
+            var report = new ChiSquaredTestReport{
+                Name = "Chi-squared goodness-of-fit test"
+            };
+            int subsetLength = dataset.Length / subsetNumber;
+            double multiplier = (double) subsetLength / dataset.Length;
+            var probs = dataset.GroupBy(item => item).ToDictionary(item => item.Key, item => multiplier * item.Count());
+            double probThreshold = 5.0;
+            var freqValues = (from item in probs
+                              where item.Value >= probThreshold
+                              select item).
+                              ToDictionary(item => item.Key, item => item.Value);
+            if(freqValues.Count == 0) {
+                report.Result = TestResult.Skipped;
+                report.Comment = "Not enough data";
+                reportList.Add(report);
+                return reportList;
+            }
+            int existRareValue = (freqValues.Count < probs.Count) ? 1 : 0;
+            double rareValuesProb = dataset.Length - freqValues.Aggregate(0.0, (prob, item) => prob + item.Value);
+            report.Df = freqValues.Count - 1 + existRareValue;
+            for(int i = 0; i < subsetNumber; ++i) {
+                report.Comment = string.Format("Subset {0}", i);
+                var subset = dataset.Skip(i * subsetLength).Take(subsetLength).GroupBy(item => item).ToDictionary(item => item.Key, item => item.Count());
+                var subsetFreqValues = (from item in subset
+                where freqValues.ContainsKey(item.Key)
+                                        select item)
+                                        .ToDictionary(item => item.Key, item => item.Value);
+                report.Stat = .0;
+                if(existRareValue > 0) {
+                    int subsetRareValuesProb = (from item in subset
+                    where !freqValues.ContainsKey(item.Key)
+                                                select item)
+                                                .Aggregate(0, (prob, item) => prob + item.Value);
+                    report.Stat = (rareValuesProb - subsetRareValuesProb) * (rareValuesProb - subsetRareValuesProb);
+                    report.Stat *= report.Stat / rareValuesProb;
+                }
+                foreach(var item in freqValues) {
+                    double obsProb = subsetFreqValues.ContainsKey(item.Key) ? subsetFreqValues[item.Key] : 0;
+                    obsProb -= item.Value;
+                    report.Stat += obsProb * obsProb / item.Value;
+                }
+                report.P = SpecMath.chisqc(report.Df, report.Stat);
+                report.Result = report.P > confidenceLevel ? TestResult.Passed : TestResult.Failed;
+                reportList.Add(report);
+                if(report.Result == TestResult.Failed) {
+                    return reportList;
+                } else {
+                    report = new ChiSquaredTestReport{
+                        Name = report.Name,
+                        Df = report.Df
+                    };
+                }
+            }
+            return reportList;
+        }
+\end{lstlisting}
+\end{small}
+
+\subsection{Хи-квадрат тесты для проверки независимости и одинаковой распределенности для бинарных данных}
+\label{attA:binary-chi}
+\begin{small}
+%\lstset{style=sharpc}
+\begin{lstlisting}
+    public static List<ChiSquaredTestReport> binaryTest(int[] dataset) {
+            var reportList = new List<ChiSquaredTestReport>(10 + subsetNumber);
+            int onesNumber = dataset.Count(value => value == 1);
+            int zerosNumber = dataset.Length - onesNumber;
+            double onesProb = (double) onesNumber / dataset.Length;
+            double zerosProb = 1.0 - onesProb;
+            double minProb = Math.Min(onesProb, zerosProb);
+            double freq = minProb * minProb * dataset.Length;
+            int subsetLength;
+            for(int k = 2; (k <= 11) && (freq > 5); ++k, freq *= minProb) {
+                var report = new ChiSquaredTestReport{
+                    Name = "Chi-squared independence test for binary data",
+                    Comment = string.Format("{0}-bit chunks", k)
+                };
+                subsetLength = dataset.Length / k;
+                var subset = new ushort[subsetLength];
+                for(int i = 0; i < subsetLength; ++i) {
+                    for(int j = 0; j < k; ++j) {
+                        subset[i] += (ushort)(dataset[i * k + j] << (k - j - 1));
+                    }
+                }
+                var subsetFreq = subset.GroupBy(value => value).ToDictionary(item => (ushort)item.Key, item => item.Count());
+                report.Stat = .0;
+                for(ushort i = 0; i < (1 << k); ++i) {
+                    byte hw = Utilities.hammingWeight(i);
+                    double expFreq = Math.Pow(onesProb, hw) * Math.Pow(zerosProb, k - hw) * subsetLength;
+                    double obsFreq = subsetFreq.ContainsKey(i) ? subsetFreq[i] : 0;
+                    report.Stat += (expFreq - obsFreq) * (expFreq - obsFreq) / expFreq;
+                }
+                report.Df = (1 << k) - 1;
+                report.P = SpecMath.chisqc(report.Df, report.Stat);
+                report.Result = report.P > confidenceLevel ? TestResult.Passed : TestResult.Failed;
+                reportList.Add(report);
+                if(report.Result == TestResult.Failed) {
+                    break;
+                }
+            }
+            var report2 = new ChiSquaredTestReport{
+                Name = "Chi-squared goodness-of-fit test for binary data"
+            };
+            subsetLength = dataset.Length / subsetNumber;
+            double expOnesNum = onesProb * subsetLength;
+            for(int i = 0; i < subsetNumber; ++i) {
+                int obsOnesNum = dataset.Skip(i * subsetLength).Take(subsetLength).Count(value => value == 1);
+                report2.Stat += (expOnesNum - obsOnesNum) * (expOnesNum - obsOnesNum) / expOnesNum;
+            }
+            report2.Df = subsetNumber - 1;
+            report2.P = SpecMath.chisqc(report2.Df, report2.Stat);
+            report2.Result = report2.P > confidenceLevel ? TestResult.Passed : TestResult.Failed;
+            reportList.Add(report2);
+            return reportList;
+        }
+    }
+\end{lstlisting}
+\end{small}
+
+\section{Оценки минимальной энтропии}
+\subsection{Оценка минимальной энтропии последовательности случайных величин, являющихся н.о.р.}
+\label{attA:iidEntr}
+\begin{small}
+%\lstset{style=sharpc}
+\begin{lstlisting}
+        /// <summary>
+        /// estimates minimal entropy for IID sources
+        /// </summary>
+        /// <param name="dataset"></param>
+        /// <param name="sampleSize">number of bits in each sample</param>
+        /// <returns>entropy estimate</returns>
+        public static double iidTest(int[] dataset, byte sampleSize)
+        {
+            double maxProb = dataset.GroupBy(x => x).Max(x => x.Count()) / (double)dataset.Length;
+            double pmax = maxProb + 2.3 * Math.Sqrt(maxProb * (1 - maxProb) / dataset.Length);
+            double entropy = -Math.Log(pmax);
+            return Math.Min(entropy, sampleSize);
+        }
+\end{lstlisting}
+\end{small}
+
+\subsection{Тест коллизий}
+\label{attA:collision}
+\begin{small}
+%\lstset{style=sharpc}
+\begin{lstlisting}
+		private static double solveBinarySearch(Func<double, double, double, double> f, double n, double m) {
+			double eps = 0.00001;
+			double high = 1 - eps;
+			double low = eps;
+			double highF = f (high, n, m);
+			double lowF = f (low, n, m);
+			if (highF * lowF > 0)
+				throw new Exception("Method not applicable");
+			double diff;
+			double diffF;
+			do {
+				diff = high - low;
+				diffF = Math.Max(Math.Abs(high), Math.Abs(low));
+				double middle = (high + low) / 2;
+				double middleF = f(middle,n,m);
+				if(middleF * highF > 0) {
+					high = middle;
+					highF = middleF;
+				} else {
+					low = middle;
+					lowF = middleF;
+				}
+			} while ((diff>eps) || (diffF<eps));
+			if (Math.Abs (high) < Math.Abs (low))
+				return high;
+			return low;
+		}
+
+		private static double expectFunction(double p, double n, double m) {
+			double q = (1 - p) / (n - 1);
+			double f = SpecMath.igamma(n+1,1/q) * Math.Pow (q, n + 1) * Math.Exp (-1/q);
+			double x = (1 / p - 1 / q) / n;
+            double z = p / q * (1 / p - 1 / q) / n;
+			double y = (1 + x) * f / q;
+			return (y - x) * p / q - z - m;
+		}
+
+        /// <summary>
+        /// estimates minimal entropy for non-IID sources using collision test
+        /// </summary>
+        /// <param name="dataset"></param>
+        /// <param name="sampleSize">number of bits in each sample</param>
+        /// <returns>entropy estimate</returns>
+        public static double collisionTest(int[] dataset, byte sampleSize) {
+            //throw new Exception("not implemented");
+            //you need to observe at least 1000 collisions
+            //see birthday problem to calculate necessary length of the dataset
+            //depending on the number of bits in a sample [e.g. Ramanujan asymptotic]
+            var collisions = StandardFunctions.allCollisions(dataset);
+            if(collisions.Count < 1000) {
+                throw new NotEnoughDataException("Collision test: there are not enough collisions in the dataset");
+            }
+            double lowerBound = StandardFunctions.confidenceInterval(collisions)[0];
+			double p = solveBinarySearch (expectFunction, sampleSize, lowerBound);
+			return -Math.Log (p, 2);
+        }
+
+		private static double epFunction(double p, double n, double m) {
+			double q = (1 - p) / (n - 1);
+			double f = 1 - Math.Pow (1 - p, n);
+			double g = (n-1)*(1 - Math.Pow (1 - q, n));
+			return f+ g - m;
+		}
+\end{lstlisting}
+\end{small}
+
+\subsection{Тест частичных коллекций}
+\label{attA:collections}
+\begin{small}
+%\lstset{style=sharpc}
+\begin{lstlisting}
+		private static double epFunction(double p, double n, double m) {
+			double q = (1 - p) / (n - 1);
+			double f = 1 - Math.Pow (1 - p, n);
+			double g = (n-1)*(1 - Math.Pow (1 - q, n));
+			return f+ g - m;
+		}
+
+        /// <summary>
+        /// estimates minimal entropy for non-IID sources using partial collection test
+        /// </summary>
+        /// <param name="dataset"></param>
+        /// <param name="sampleSize">number of bits in each sample</param>
+        /// <returns>entropy estimate</returns>
+        public static double partialCollectionTest(int[] dataset, byte sampleSize) {
+            //the output space or indication of values that never appear in the output SHALL be
+            //provided by the developer for validation testing
+
+            //you need to observe minimum 500 events, so dataset length need to be at least 500*2^b,
+            //where b is the number of bits in a sample
+            int outputSpaceSize = 1 << sampleSize;
+            int[] distinctValuesNumbers = new int[dataset.Length / outputSpaceSize];
+            var valuesSet = new HashSet<int>();
+            for(int subset = 0; subset < distinctValuesNumbers.Length; ++subset) {
+                for(int position = 0; position < outputSpaceSize; ++position) {
+                    valuesSet.Add(dataset[subset * outputSpaceSize + position]);
+                }
+                distinctValuesNumbers[subset] = valuesSet.Count;
+                valuesSet.Clear();
+            }
+			int m = distinctValuesNumbers.Max();
+			if (outputSpaceSize - m > 500) {
+				throw new NotEnoughDataException("Partial collection test: not enough data");
+			}
+            double lowerBound =
+StandardFunctions.confidenceInterval(distinctValuesNumbers)[0];
+			double p = solveBinarySearch (epFunction, sampleSize, lowerBound);
+			return -Math.Log (p, 2);
+        }
+\end{lstlisting}
+\end{small}
+
+\subsection{Тест марковской зависимости}
+\label{attA:markov}
+\begin{small}
+%\lstset{style=sharpc}
+\begin{lstlisting}
+        public static double markovTest(int[] dataset, byte sampleSize) {
+			//the largest sample size accommodated by this test is 6 bits
+			int N = 1 << sampleSize;
+			int power = Math.Max (N * N, 128);
+            double a = - power * Math.Log(confidenceLevel, 2);
+			double e = Math.Sqrt (0.5 * a / dataset.Length);
+			if (sampleSize > 6)
+				throw new NotEnoughDataException("Markov test: too big output space for the test");
+			SparseArray<int, double> prior = new SparseArray<int, double>(0.0);
+			SparseArray<int, double> priorE = new SparseArray<int, double>(0.0);
+			SparseArray<int, double> minP = new SparseArray<int, double>(100000.0);
+			SparseArray<int, int> minWay = new SparseArray<int, int>(-1);
+			Sparse2DMatrix<int, int, double> trans = new Sparse2DMatrix<int, int, double>(1000000);
+			Sparse2DMatrix<int, int, double> vertex = new Sparse2DMatrix<int, int, double>(-1.0);
+			prior [dataset [0]]++;
+			for (int i = 1; i < dataset.Length; i++) {
+				prior [dataset [i]]++;
+				trans [dataset [i - 1], dataset [i]]++;
+			}
+			foreach(KeyValuePair<int, double> pair in prior)
+			{
+                priorE[pair.Key] = Math.Sqrt (0.5 * a / pair.Value);
+				//Console.WriteLine("pair vector[{0}] = {1}", pair.Key, pair.Value);
+			}
+			foreach (KeyValuePair<ComparableTuple2<int, int>, double> pair in trans)
+			{
+				int key0 = 0;
+				int key1 = 0;
+				trans.SeparateCombinedKeys(pair.Key, ref key0, ref key1);
+				trans [key0,key1] = - Math.Log(Math.Min(1, pair.Value / prior[key0] + priorE[key0]),2);
+				//Console.WriteLine("pair matrix[{0}, {1}] = {2}", key0, key1, pair.Value);
+			}
+			foreach(KeyValuePair<int, double> pair in prior)
+			{
+				prior[pair.Key] = - Math.Log(Math.Min(1, pair.Value / dataset.Length + e),2);
+				//Console.WriteLine("pair vector[{0}] = {1}", pair.Key, pair.Value);
+			}
+			foreach (KeyValuePair<ComparableTuple2<int, int>, double> pair in trans)
+			{
+				int key0 = 0;
+				int key1 = 0;
+				trans.SeparateCombinedKeys(pair.Key, ref key0, ref key1);
+				if (pair.Value < minP [key0]) {
+					minP [key0] = pair.Value;
+					minWay [key0] = key1;
+				}
+				//Console.WriteLine("pair matrix[{0}, {1}] = {2}", key0, key1, pair.Value);
+			}
+			foreach(KeyValuePair<int, double> pair in prior)
+			{
+				vertex[0,pair.Key] = pair.Value;
+				//Console.WriteLine("pair vector[{0}] = {1}", pair.Key, pair.Value);
+			}
+			for (int k = 1; k < 128; k++) {
+				foreach(KeyValuePair<int, double> end in prior) {
+					vertex [k, end.Key] = double.MaxValue;
+					foreach(KeyValuePair<int, double> begin in prior) {
+						if (vertex [k, end.Key] > vertex [k-1, begin.Key] + trans[begin.Key, end.Key]) {
+							vertex [k, end.Key] = vertex [k - 1, begin.Key] + trans [begin.Key, end.Key];
+						}
+					}
+				}
+			}
+			double min = double.MaxValue;
+			foreach(KeyValuePair<int, double> pair in prior)
+			{
+				if (min > vertex [127, pair.Key])
+					min = vertex [127, pair.Key];
+				//Console.WriteLine("pair vector[{0}] = {1}", pair.Key, pair.Value);
+			}
+			return min;
+        }
+\end{lstlisting}
+\end{small}
+
+\subsection{Тест сжатия}
+\label{attA:compressEntr}
+\begin{small}
+%\lstset{style=sharpc}
+\begin{lstlisting}
+		private static double functionG(double p, double n) {
+			double firstSum = 0;
+			for (int t = dictionaryLearningSetLength+1; t <= n; t++) {
+				double secondSum = 0;
+				for (int s = 1; s < t; s++)
+					secondSum += Math.Log (s, 2) * p * p * Math.Pow (1 - p, s - 1);
+				secondSum += Math.Log (t, 2) * p * Math.Pow (1 - p, t - 1);
+				firstSum += secondSum;
+			}
+			return firstSum / (n - dictionaryLearningSetLength);
+		}
+
+		private static double functionE(double p, double n,double m) {
+			double q = (1 - p) / (n - 1);
+			double Ep = functionG (p, n) + (n - 1) * functionG (q, n);
+			return Ep - m;
+		}
+
+        private static readonly int dictionaryLearningSetLength = 1000;
+
+        /// <summary>
+        /// estimates minimal entropy for non-IID sources using compression test
+        /// </summary>
+        /// <param name="dataset"></param>
+        /// <param name="sampleSize">number of bits in each sample</param>
+        /// <returns>entropy estimate</returns>
+        public static double compressionTest(int[] dataset, byte sampleSize) {
+            var dictionary = new Dictionary<int, int>();
+            if(dataset.Length <= dictionaryLearningSetLength){
+                throw new NotEnoughDataException("Compression test: not enough data");
+            }
+            //first part of the dataset is used to create dictionary
+            int position;
+            for(position = 0; position < dictionaryLearningSetLength; ++position) {
+                if(dictionary.ContainsKey(dataset[position])) {
+                    dictionary[dataset[position]] = position;
+                } else {
+                    dictionary.Add(dataset[position], position);
+                }
+            }
+            //second part of the dataset is used for the test
+            var repetitions = new List<int>(dataset.Length - position);
+            for(; position < dataset.Length; ++position) {
+                if(dictionary.ContainsKey(dataset[position])) {
+                    repetitions.Add(position - dictionary[dataset[position]]);
+                    dictionary[dataset[position]] = position;
+                } else {
+                    repetitions.Add(position);
+                    dictionary.Add(dataset[position], position);
+                }
+            }
+            double lowerBound = StandardFunctions.confidenceInterval(repetitions)[0];
+			double p = solveBinarySearch (functionE, sampleSize, lowerBound);
+			return -Math.Log (p, 2);
+        }
+\end{lstlisting}
+\end{small}
+
+\subsection{Частотный тест}
+\label{attA:freqEntr}
+\begin{small}
+%\lstset{style=sharpc}
+\begin{lstlisting}
+        /// <summary>
+        /// estimates minimal entropy for non-IID sources using frequency test
+        /// </summary>
+        /// <param name="dataset"></param>
+        /// <param name="sampleSize">number of bits in each sample</param>
+        /// <returns>entropy estimate</returns>
+        public static double frequencyTest(int[] dataset, byte sampleSize) {
+            double maxProb = dataset.GroupBy(x => x).Max(x => x.Count()) / (double)dataset.Length;
+            return -Math.Log(maxProb + Math.Sqrt(0.5 * Math.Log(1 / (1 - confidenceLevel), 2) / dataset.Length), 2);
+        }
+\end{lstlisting}
+\end{small} 
