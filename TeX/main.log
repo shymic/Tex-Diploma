@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.5.17)  20 MAY 2017 03:08
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.5.17)  20 MAY 2017 18:52
 entering extended mode
 **main.tex
-(D:\TeX\main.tex
+("D:\Study\5 РєСѓСЂСЃ\COURS_DIPL\TeX\main.tex"
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
 abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
@@ -13,7 +13,8 @@ german-x-2013-05-26, nynorsk, oriya, panjabi, pinyin, polish, portuguese, roman
 ian, russian, sanskrit, serbian, slovak, slovenian, spanish, swedish, swissgerm
 an, tamil, telugu, turkish, turkmen, ukenglish, ukrainian, uppersorbian, usengl
 ishmax, welsh, loaded.
-(D:\TeX\Preamble.tex ("C:\Program Files\MiKTeX 2.9\tex\latex\base\report.cls"
+("D:\Study\5 РєСѓСЂСЃ\COURS_DIPL\TeX\Preamble.tex"
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\report.cls"
 Document Class: report 2007/10/19 v1.4h Standard LaTeX document class
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\size12.clo"
 File: size12.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
@@ -379,9 +380,10 @@ File: lstlang1.sty 2015/06/04 1.6 listings language file
 \belowtablecaptionskip=\skip54
 \tableparindent=\skip55
 )
-(D:\TeX\main.aux
+("D:\Study\5 РєСѓСЂСЃ\COURS_DIPL\TeX\main.aux"
 LaTeX Font Info:    Try loading font information for T2A+cmr on input line 4.
- ("C:\Program Files\MiKTeX 2.9\tex\latex\cyrillic\t2acmr.fd"
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\cyrillic\t2acmr.fd"
 File: t2acmr.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
 )
 
@@ -424,13 +426,15 @@ LaTeX Font Info:    ... okay on input line 3.
 \everyMPtoPDFconversion=\toks35
 )
 \c@lstlisting=\count140
- (D:\TeX\TitlePage.tex
+ ("D:\Study\5 РєСѓСЂСЃ\COURS_DIPL\TeX\TitlePage.tex"
 LaTeX Font Info:    Try loading font information for U+msa on input line 38.
- ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 LaTeX Font Info:    Try loading font information for U+msb on input line 38.
- ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 Overfull \hbox (23.62482pt too wide) in paragraph at lines 38--56
@@ -442,16 +446,18 @@ Underfull \hbox (badness 10000) in paragraph at lines 38--56
 
  []
 
-) (D:\TeX\TableOfContents.tex [1
+) ("D:\Study\5 РєСѓСЂСЃ\COURS_DIPL\TeX\TableOfContents.tex" [1
 
-{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}] (D:\TeX\main.toc)
+{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
+("D:\Study\5 РєСѓСЂСЃ\COURS_DIPL\TeX\main.toc")
 \tf@toc=\write3
-) (D:\TeX\intro.tex [2
+)
+("D:\Study\5 РєСѓСЂСЃ\COURS_DIPL\TeX\intro.tex" [2
 
 ] [3
 
-]) (D:\TeX\chapter_1.tex
-[4]
+])
+("D:\Study\5 РєСѓСЂСЃ\COURS_DIPL\TeX\chapter_1.tex" [4]
 {\Russian \CYRG \cyrl \cyra \cyrv \cyra } 1.
 [5
 
@@ -463,7 +469,7 @@ Underfull \hbox (badness 1642) in paragraph at lines 57--58
 
 [6] [7
 
-]) (D:\TeX\chapter_2.tex [8]
+]) ("D:\Study\5 РєСѓСЂСЃ\COURS_DIPL\TeX\chapter_2.tex" [8]
 {\Russian \CYRG \cyrl \cyra \cyrv \cyra } 2.
 [9
 
@@ -653,37 +659,39 @@ Package pdftex.def Info: lda.png used on input line 416.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[21] [22 <D:/TeX/lda.png>] [23
+[21] [22 <D:/Study/5 РєСѓСЂСЃ/COURS_DIPL/TeX/lda.png>] [23
 
 ] [24
 
-] <hist1.png, id=96, 462.528pt x 346.896pt>
+]
+<zigzag.jpg, id=96, 163.3603pt x 152.06813pt>
+File: zigzag.jpg Graphic file (type jpg)
+ <use zigzag.jpg>
+Package pdftex.def Info: zigzag.jpg used on input line 491.
+(pdftex.def)             Requested size: 241.84842pt x 225.12923pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<hist1.png, id=97, 462.528pt x 346.896pt>
 File: hist1.png Graphic file (type png)
-
-<use hist1.png>
-Package pdftex.def Info: hist1.png used on input line 446.
-(pdftex.def)             Requested size: 241.84842pt x 181.38736pt.
-) (D:\TeX\chapter_3.tex
-Underfull \hbox (badness 2253) in paragraph at lines 443--1
-\T2A/cmr/m/n/14.4 На ос-но-ва-нии экс-пе-ри-мен-таль-но-го ис-сле-до-ва-ния нек
-о-то-рой ба-зы изоб-
- []
+ <use hist1.png>
+Package pdftex.def Info: hist1.png used on input line 497.
+(pdftex.def)             Requested size: 338.5863pt x 253.95184pt.
 
 
-Underfull \hbox (badness 1127) in paragraph at lines 443--1
-\T2A/cmr/m/n/14.4 оцен-ка ве-ро-ят-но-сти по-яв-ле-ния еди-нич-но-го би-та на-х
-о-дит-ся в ин-тер-ва-ле
- []
+LaTeX Warning: `h' float specifier changed to `ht'.
 
-[25 <D:/TeX/hist1.png>]
+) ("D:\Study\5 РєСѓСЂСЃ\COURS_DIPL\TeX\chapter_3.tex" [25] [26 <D:/Study/5 РєСѓ
+СЂСЃ/COURS_DIPL/TeX/zigzag.jpg> <D:/Study/5 РєСѓСЂСЃ/COURS_DIPL/TeX/hist1.png>]
 {\Russian \CYRG \cyrl \cyra \cyrv \cyra } 3.
-<h2_01.png, id=102, 481.8pt x 361.35pt>
+<h2_01.png, id=106, 481.8pt x 361.35pt>
 File: h2_01.png Graphic file (type png)
  <use h2_01.png>
 Package pdftex.def Info: h2_01.png used on input line 5.
 (pdftex.def)             Requested size: 290.22105pt x 217.67181pt.
 
-<h2_03.png, id=103, 462.528pt x 346.896pt>
+<h2_03.png, id=107, 462.528pt x 346.896pt>
 File: h2_03.png Graphic file (type png)
  <use h2_03.png>
 Package pdftex.def Info: h2_03.png used on input line 10.
@@ -692,7 +700,7 @@ Package pdftex.def Info: h2_03.png used on input line 10.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<h2_05.png, id=104, 481.8pt x 361.35pt>
+<h2_05.png, id=108, 481.8pt x 361.35pt>
 File: h2_05.png Graphic file (type png)
  <use h2_05.png>
 Package pdftex.def Info: h2_05.png used on input line 15.
@@ -701,7 +709,7 @@ Package pdftex.def Info: h2_05.png used on input line 15.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<h2.png, id=105, 499.8675pt x 316.93407pt>
+<h2.png, id=109, 499.8675pt x 316.93407pt>
 File: h2.png Graphic file (type png)
  <use h2.png>
 Package pdftex.def Info: h2.png used on input line 20.
@@ -710,7 +718,7 @@ Package pdftex.def Info: h2.png used on input line 20.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<h3_05.png, id=106, 462.528pt x 346.896pt>
+<h3_05.png, id=110, 462.528pt x 346.896pt>
 File: h3_05.png Graphic file (type png)
  <use h3_05.png>
 Package pdftex.def Info: h3_05.png used on input line 26.
@@ -719,7 +727,7 @@ Package pdftex.def Info: h3_05.png used on input line 26.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<h3_03.png, id=107, 462.528pt x 346.896pt>
+<h3_03.png, id=111, 462.528pt x 346.896pt>
 File: h3_03.png Graphic file (type png)
  <use h3_03.png>
 Package pdftex.def Info: h3_03.png used on input line 31.
@@ -728,7 +736,7 @@ Package pdftex.def Info: h3_03.png used on input line 31.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<h3_01.png, id=108, 462.528pt x 346.896pt>
+<h3_01.png, id=112, 462.528pt x 346.896pt>
 File: h3_01.png Graphic file (type png)
  <use h3_01.png>
 Package pdftex.def Info: h3_01.png used on input line 36.
@@ -737,7 +745,7 @@ Package pdftex.def Info: h3_01.png used on input line 36.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<h3.png, id=109, 472.01344pt x 314.67563pt>
+<h3.png, id=113, 472.01344pt x 314.67563pt>
 File: h3.png Graphic file (type png)
  <use h3.png>
 Package pdftex.def Info: h3.png used on input line 41.
@@ -746,7 +754,7 @@ Package pdftex.def Info: h3.png used on input line 41.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<h4_05.png, id=110, 462.528pt x 346.896pt>
+<h4_05.png, id=114, 462.528pt x 346.896pt>
 File: h4_05.png Graphic file (type png)
  <use h4_05.png>
 Package pdftex.def Info: h4_05.png used on input line 46.
@@ -755,7 +763,7 @@ Package pdftex.def Info: h4_05.png used on input line 46.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<h4_03.png, id=111, 462.528pt x 346.896pt>
+<h4_03.png, id=115, 462.528pt x 346.896pt>
 File: h4_03.png Graphic file (type png)
  <use h4_03.png>
 Package pdftex.def Info: h4_03.png used on input line 51.
@@ -764,7 +772,7 @@ Package pdftex.def Info: h4_03.png used on input line 51.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<h4_01.png, id=112, 462.528pt x 346.896pt>
+<h4_01.png, id=116, 462.528pt x 346.896pt>
 File: h4_01.png Graphic file (type png)
  <use h4_01.png>
 Package pdftex.def Info: h4_01.png used on input line 56.
@@ -773,7 +781,7 @@ Package pdftex.def Info: h4_01.png used on input line 56.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<h4.png, id=113, 419.31656pt x 269.50688pt>
+<h4.png, id=117, 419.31656pt x 269.50688pt>
 File: h4.png Graphic file (type png)
  <use h4.png>
 Package pdftex.def Info: h4.png used on input line 61.
@@ -782,7 +790,7 @@ Package pdftex.def Info: h4.png used on input line 61.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<h_l.png, id=114, 549.9747pt x 474.0912pt>
+<h_l.png, id=118, 549.9747pt x 474.0912pt>
 File: h_l.png Graphic file (type png)
  <use h_l.png>
 Package pdftex.def Info: h_l.png used on input line 67.
@@ -791,17 +799,23 @@ Package pdftex.def Info: h_l.png used on input line 67.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-) (D:\TeX\concl.tex [26
+) ("D:\Study\5 РєСѓСЂСЃ\COURS_DIPL\TeX\concl.tex" [27
 
- <D:/TeX/h2_01.png>] [27 <D:/TeX/h2_03.png> <D:/TeX/h2_05.png>] [28 <D:/TeX/h2.
-png> <D:/TeX/h3_05.png>] [29 <D:/TeX/h3_03.png> <D:/TeX/h3_01.png>] [30 <D:/TeX
-/h3.png> <D:/TeX/h4_05.png>] [31 <D:/TeX/h4_03.png> <D:/TeX/h4_01.png>] [32 <D:
-/TeX/h4.png>] [33 <D:/TeX/h_l.png>])
-(D:\TeX\referenses.tex [34
+ <D:/Study/5 РєСѓСЂСЃ/COURS_DIPL/TeX/h2_01.png>] [28 <D:/Study/5 РєСѓСЂСЃ/COURS
+_DIPL/TeX/h2_03.png> <D:/Study/5 РєСѓСЂСЃ/COURS_DIPL/TeX/h2_05.png>] [29 <D:/St
+udy/5 РєСѓСЂСЃ/COURS_DIPL/TeX/h2.png> <D:/Study/5 РєСѓСЂСЃ/COURS_DIPL/TeX/h3_05
+.png>] [30 <D:/Study/5 РєСѓСЂСЃ/COURS_DIPL/TeX/h3_03.png> <D:/Study/5 РєСѓСЂСЃ/
+COURS_DIPL/TeX/h3_01.png>] [31 <D:/Study/5 РєСѓСЂСЃ/COURS_DIPL/TeX/h3.png> <D:/
+Study/5 РєСѓСЂСЃ/COURS_DIPL/TeX/h4_05.png>] [32 <D:/Study/5 РєСѓСЂСЃ/COURS_DIPL
+/TeX/h4_03.png> <D:/Study/5 РєСѓСЂСЃ/COURS_DIPL/TeX/h4_01.png>] [33 <D:/Study/5
+ РєСѓСЂСЃ/COURS_DIPL/TeX/h4.png>] [34 <D:/Study/5 РєСѓСЂСЃ/COURS_DIPL/TeX/h_l.p
+ng>])
+("D:\Study\5 РєСѓСЂСЃ\COURS_DIPL\TeX\referenses.tex" [35
 
-] [35
+] [36
 
-]) (D:\TeX\attA.tex
+])
+("D:\Study\5 РєСѓСЂСЃ\COURS_DIPL\TeX\attA.tex"
 LaTeX Font Info:    Try loading font information for T2A+cmtt on input line 25.
 
 
@@ -810,21 +824,22 @@ File: t2acmtt.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
 )
 LaTeX Font Info:    Font shape `T2A/cmtt/bx/n' in size <10.95> not available
 (Font)              Font shape `T2A/cmtt/m/n' tried instead on input line 26.
- [36] [37]
-[38] [39] [40] [41] [42] [43] [44] [45] [46] [47] [48] [49] [50] [51] [52]
-[53] [54]) (D:\TeX\attB.tex [55] [56]) [57] (D:\TeX\main.aux)
+ [37] [38]
+[39] [40] [41] [42] [43] [44] [45] [46] [47] [48] [49] [50] [51] [52] [53]
+[54] [55]) ("D:\Study\5 РєСѓСЂСЃ\COURS_DIPL\TeX\attB.tex" [56] [57]) [58]
+("D:\Study\5 РєСѓСЂСЃ\COURS_DIPL\TeX\main.aux")
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 6482 strings out of 493921
- 81838 string characters out of 3147279
+ 6496 strings out of 493921
+ 82867 string characters out of 3147279
  237951 words of memory out of 3000000
- 9627 multiletter control sequences out of 15000+200000
+ 9639 multiletter control sequences out of 15000+200000
  19350 words of font info for 54 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 29i,12n,40p,1448b,1815s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 29i,12n,40p,1448b,1817s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\Andrey\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\lh\lh-t2a\dpi600\l
 att1095.pk> <C:\Users\Andrey\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\lh\lh-t2a
 \dpi600\lati1440.pk> <C:\Users\Andrey\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\
@@ -842,9 +857,9 @@ sfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
 /cmr7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pf
 b><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Pro
 gram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on main.pdf (57 pages, 672908 bytes).
+Output written on main.pdf (58 pages, 691472 bytes).
 PDF statistics:
- 737 PDF objects out of 1000 (max. 8388607)
+ 742 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 76 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 81 words of extra memory for PDF output out of 10000 (max. 10000000)
 
