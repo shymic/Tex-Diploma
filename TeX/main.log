@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.5.17)  20 MAY 2017 18:52
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.5.17)  21 MAY 2017 20:37
 entering extended mode
 **main.tex
 ("D:\Study\5 –∫—É—Ä—Å\COURS_DIPL\TeX\main.tex"
@@ -340,6 +340,15 @@ Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1358.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1359.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
 )
+("C:\Program Files\MiKTeX 2.9\tex\latex\caption\totalcount.sty"
+Package: totalcount 2013/05/12 v1.0-92 Total values of counters (AR)
+\c@totalcount@figure=\count116
+\c@totalcount@table=\count117
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\totcount\totcount.sty"
+Package: totcount 2011/01/25 v1.2 package for gettingthe total value of LaTeX c
+ounters
+)
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\inputenc.sty"
 Package: inputenc 2008/03/30 v1.1d Input encoding file
 \inpenc@prehook=\toks32
@@ -348,34 +357,40 @@ Package: inputenc 2008/03/30 v1.1d Input encoding file
 ("C:\Program Files\MiKTeX 2.9\tex\latex\cyrillic\cp1251.def"
 File: cp1251.def 2014/10/28 v1.0d Input encoding file
 ))
+\c@page@totc=\count118
+\c@attachcnt=\count119
+\c@attachcnt@totc=\count120
+\c@bibitem@totc=\count121
+\c@bibitem=\count122
+
 ("C:\Program Files\MiKTeX 2.9\tex\latex\tocvsec2\tocvsec2.sty"
 Package: tocvsec2 2014/03/10 v1.3a variable ToC section entries
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\ifthen.sty"
 Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
 )
-\c@max@tocdepth=\count116
-\c@max@secnumdepth=\count117
+\c@max@tocdepth=\count123
+\c@max@secnumdepth=\count124
 )
 ("C:\Program Files\MiKTeX 2.9\tex\latex\listings\lstlang1.sty"
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
-\c@Theorem=\count118
-\c@Lemma=\count119
-\c@Proposition=\count120
-\c@Corollary=\count121
-\c@Statement=\count122
-\c@definition=\count123
-\c@Definition=\count124
-\c@Conjecture=\count125
-\c@Algorithm=\count126
-\c@Property=\count127
-\c@lemma=\count128
-\c@theorem=\count129
-\c@remark=\count130
-\c@example=\count131
-\c@Note=\count132
-\c@Case=\count133
+\c@Theorem=\count125
+\c@Lemma=\count126
+\c@Proposition=\count127
+\c@Corollary=\count128
+\c@Statement=\count129
+\c@definition=\count130
+\c@Definition=\count131
+\c@Conjecture=\count132
+\c@Algorithm=\count133
+\c@Property=\count134
+\c@lemma=\count135
+\c@theorem=\count136
+\c@remark=\count137
+\c@example=\count138
+\c@Note=\count139
+\c@Case=\count140
 \abovetablecaptionskip=\skip53
 \belowtablecaptionskip=\skip54
 \tableparindent=\skip55
@@ -388,6 +403,162 @@ File: t2acmr.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
 )
 
 LaTeX Warning: Label `tab:canonsummary' multiply defined.
+
+! Missing \endcsname inserted.
+<to be read again> 
+                   \relax 
+l.135 \bibcite{\relax }{2}
+                          
+The control sequence marked <to be read again> should
+not appear between \csname and \endcsname.
+
+! Extra \endcsname.
+\@ifundefined ...dafter \ifx \csname #1\endcsname 
+                                                  \relax \expandafter \@firs...
+l.135 \bibcite{\relax }{2}
+                          
+I'm ignoring this, since I wasn't doing a \csname.
+
+! Missing \endcsname inserted.
+<to be read again> 
+                   \relax 
+l.135 \bibcite{\relax }{2}
+                          
+The control sequence marked <to be read again> should
+not appear between \csname and \endcsname.
+
+! Missing \endcsname inserted.
+<to be read again> 
+                   \relax 
+l.136 \bibcite{\relax }{3}
+                          
+The control sequence marked <to be read again> should
+not appear between \csname and \endcsname.
+
+
+LaTeX Warning: Label `\relax ' multiply defined.
+
+! Missing \endcsname inserted.
+<to be read again> 
+                   \relax 
+l.136 \bibcite{\relax }{3}
+                          
+The control sequence marked <to be read again> should
+not appear between \csname and \endcsname.
+
+! Missing \endcsname inserted.
+<to be read again> 
+                   \relax 
+l.137 \bibcite{\relax }{4}
+                          
+The control sequence marked <to be read again> should
+not appear between \csname and \endcsname.
+
+
+LaTeX Warning: Label `\relax ' multiply defined.
+
+! Missing \endcsname inserted.
+<to be read again> 
+                   \relax 
+l.137 \bibcite{\relax }{4}
+                          
+The control sequence marked <to be read again> should
+not appear between \csname and \endcsname.
+
+! Missing \endcsname inserted.
+<to be read again> 
+                   \relax 
+l.138 \bibcite{\relax }{5}
+                          
+The control sequence marked <to be read again> should
+not appear between \csname and \endcsname.
+
+
+LaTeX Warning: Label `\relax ' multiply defined.
+
+! Missing \endcsname inserted.
+<to be read again> 
+                   \relax 
+l.138 \bibcite{\relax }{5}
+                          
+The control sequence marked <to be read again> should
+not appear between \csname and \endcsname.
+
+! Missing \endcsname inserted.
+<to be read again> 
+                   \relax 
+l.139 \bibcite{\relax }{6}
+                          
+The control sequence marked <to be read again> should
+not appear between \csname and \endcsname.
+
+
+LaTeX Warning: Label `\relax ' multiply defined.
+
+! Missing \endcsname inserted.
+<to be read again> 
+                   \relax 
+l.139 \bibcite{\relax }{6}
+                          
+The control sequence marked <to be read again> should
+not appear between \csname and \endcsname.
+
+! Missing \endcsname inserted.
+<to be read again> 
+                   \relax 
+l.140 \bibcite{\relax }{7}
+                          
+The control sequence marked <to be read again> should
+not appear between \csname and \endcsname.
+
+
+LaTeX Warning: Label `\relax ' multiply defined.
+
+! Missing \endcsname inserted.
+<to be read again> 
+                   \relax 
+l.140 \bibcite{\relax }{7}
+                          
+The control sequence marked <to be read again> should
+not appear between \csname and \endcsname.
+
+! Missing \endcsname inserted.
+<to be read again> 
+                   \relax 
+l.141 \bibcite{\relax }{8}
+                          
+The control sequence marked <to be read again> should
+not appear between \csname and \endcsname.
+
+
+LaTeX Warning: Label `\relax ' multiply defined.
+
+! Missing \endcsname inserted.
+<to be read again> 
+                   \relax 
+l.141 \bibcite{\relax }{8}
+                          
+The control sequence marked <to be read again> should
+not appear between \csname and \endcsname.
+
+! Missing \endcsname inserted.
+<to be read again> 
+                   \relax 
+l.142 \bibcite{\relax }{9}
+                          
+The control sequence marked <to be read again> should
+not appear between \csname and \endcsname.
+
+
+LaTeX Warning: Label `\relax ' multiply defined.
+
+! Missing \endcsname inserted.
+<to be read again> 
+                   \relax 
+l.142 \bibcite{\relax }{9}
+                          
+The control sequence marked <to be read again> should
+not appear between \csname and \endcsname.
 
 )
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 3.
@@ -413,19 +584,19 @@ LaTeX Font Info:    ... okay on input line 3.
 
 ("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count134
+\scratchcounter=\count141
 \scratchdimen=\dimen123
 \scratchbox=\box36
-\nofMPsegments=\count135
-\nofMParguments=\count136
+\nofMPsegments=\count142
+\nofMParguments=\count143
 \everyMPshowfont=\toks34
-\MPscratchCnt=\count137
+\MPscratchCnt=\count144
 \MPscratchDim=\dimen124
-\MPnumerator=\count138
-\makeMPintoPDFobject=\count139
+\MPnumerator=\count145
+\makeMPintoPDFobject=\count146
 \everyMPtoPDFconversion=\toks35
 )
-\c@lstlisting=\count140
+\c@lstlisting=\count147
  ("D:\Study\5 –∫—É—Ä—Å\COURS_DIPL\TeX\TitlePage.tex"
 LaTeX Font Info:    Try loading font information for U+msa on input line 38.
 
@@ -452,31 +623,109 @@ Underfull \hbox (badness 10000) in paragraph at lines 38--56
 ("D:\Study\5 –∫—É—Ä—Å\COURS_DIPL\TeX\main.toc")
 \tf@toc=\write3
 )
-("D:\Study\5 –∫—É—Ä—Å\COURS_DIPL\TeX\intro.tex" [2
+("D:\Study\5 –∫—É—Ä—Å\COURS_DIPL\TeX\Legend.tex" [2
 
-] [3
+]
+Overfull \hbox (7.54723pt too wide) in paragraph at lines 5--10
+[][]
+ []
 
-])
-("D:\Study\5 –∫—É—Ä—Å\COURS_DIPL\TeX\chapter_1.tex" [4]
-{\Russian \CYRG \cyrl \cyra \cyrv \cyra } 1.
+) ("D:\Study\5 –∫—É—Ä—Å\COURS_DIPL\TeX\annot.tex" [3
+
+] [4
+
+]
+Underfull \hbox (badness 1253) in paragraph at lines 37--38
+[]\T2A/cmr/bx/it/14.4 ” ‚˚-ÌiÍÛ \T2A/cmr/m/n/14.4 ‡Ú-˚-Ï‡-Ì˚ ‡ÒiÏÔ-Ú‡-Ú˚˜-Ì˚ˇ 
+‡ˆ-˝Ì-Íi ˝Ì-Ú‡-Ôii \T2A/cmr/m/it/14.4 l\T2A/cmr/m/n/14.4 -„‡ÏÏ˚ Ô˚
+ []
+
 [5
 
 ]
+Underfull \hbox (badness 5847) in paragraph at lines 48--49
+[]\T2A/cmr/m/n/14.4 EMBEDDING, MARKOV CHAIN, STEGANOGRAPHY, ENTROPY,
+ []
+
+) ("D:\Study\5 –∫—É—Ä—Å\COURS_DIPL\TeX\intro.tex" [6
+
+]
+
+LaTeX Warning: Citation `varnoskiy' on page 7 undefined on input line 5.
+
+
+LaTeX Warning: Citation `panamarev' on page 7 undefined on input line 13.
+
+) ("D:\Study\5 –∫—É—Ä—Å\COURS_DIPL\TeX\chapter_1.tex" [7
+
+]
+{\Russian \CYRG \cyrl \cyra \cyrv \cyra } 1.
+
+LaTeX Warning: Citation `agranovskiy' on page 8 undefined on input line 5.
+
+
+LaTeX Warning: Citation `agranovskiy' on page 8 undefined on input line 14.
+
+
+LaTeX Warning: Citation `agranovskiy' on page 8 undefined on input line 18.
+
+
+LaTeX Warning: Citation `agranovskiy' on page 8 undefined on input line 22.
+
+
+LaTeX Warning: Citation `agranovskiy' on page 8 undefined on input line 26.
+
+
+LaTeX Warning: Citation `agranovskiy' on page 8 undefined on input line 30.
+
+
+LaTeX Warning: Citation `agranovskiy' on page 8 undefined on input line 34.
+
+
+LaTeX Warning: Citation `agranovskiy' on page 8 undefined on input line 41.
+
+[8
+
+]
+
+LaTeX Warning: Citation `agranovskiy' on page 9 undefined on input line 45.
+
+
+LaTeX Warning: Citation `agranovskiy' on page 9 undefined on input line 49.
+
+
+LaTeX Warning: Citation `duhin' on page 9 undefined on input line 57.
+
+
 Underfull \hbox (badness 1642) in paragraph at lines 57--58
 \T2A/cmr/m/n/14.4 ÌË-Ï‡Ú¸ ÛÒÚÓÈ-ÒÚ‚Ó, ÔÓ-ÓÊ-‰‡-˛-˘ÂÂ ÔÓ-ÒÎÂ-‰Ó-‚‡-ÚÂÎ¸-ÌÓ-ÒÚË
 , ÒÓ-ÒÚ‡‚-ÎÂÌ-Ì˚Â ËÁ
  []
 
-[6] [7
 
-]) ("D:\Study\5 –∫—É—Ä—Å\COURS_DIPL\TeX\chapter_2.tex" [8]
+LaTeX Warning: Citation `duhin' on page 9 undefined on input line 60.
+
+
+LaTeX Warning: Citation `duhin' on page 9 undefined on input line 68.
+
+[9] [10
+
+]) ("D:\Study\5 –∫—É—Ä—Å\COURS_DIPL\TeX\chapter_2.tex" [11]
 {\Russian \CYRG \cyrl \cyra \cyrv \cyra } 2.
-[9
+[12
 
-] [10]
+] [13]
+
+LaTeX Warning: Citation `duhin' on page 14 undefined on input line 92.
+
+
+LaTeX Warning: Citation `duhin' on page 14 undefined on input line 95.
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 95--97
-[]\T2A/cmr/bx/n/14.4 ŒÔÂ‰ÂÎÂÌËÂ 2.2.2. [] \T2A/cmr/m/n/14.4 [2] ¬Â-ÎË-˜Ë-Ì‡: $
-\OML/cmm/m/it/14.4 H[] \OT1/cmr/m/n/14.4 =$
+[]\T2A/cmr/bx/n/14.4 ŒÔÂ‰ÂÎÂÌËÂ 2.2.2. [] \T2A/cmr/m/n/14.4 [\T2A/cmr/bx/n/14.
+4 ?\T2A/cmr/m/n/14.4 ] ¬Â-ÎË-˜Ë-Ì‡: $\OML/cmm/m/it/14.4 H[] \OT1/cmr/m/n/14.4 =
+$
  []
 
 
@@ -486,7 +735,7 @@ OMS/cmsy/m/n/14.4 g [] []$ \T2A/cmr/m/n/14.4 Ì‡-Á˚-‚‡-ÂÚ-Òˇ ¯‡-„Ó-‚ÓÈ ˝Ì-ÚÓ-ÔË
 -ÂÈ
  []
 
-[11]
+[14]
 Underfull \hbox (badness 10000) in paragraph at lines 99--100
 
  []
@@ -504,17 +753,23 @@ Underfull \hbox (badness 10000) in paragraph at lines 103--105
 
  []
 
-[12]
+
+LaTeX Warning: Citation `duhin' on page 15 undefined on input line 114.
+
+[15]
 Overfull \hbox (7.53267pt too wide) in paragraph at lines 155--155
 [] 
  []
+
+
+LaTeX Warning: Citation `duhin' on page 16 undefined on input line 167.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 173--177
 
  []
 
-[13]
+[16]
 Underfull \hbox (badness 10000) in paragraph at lines 180--181
 
  []
@@ -544,7 +799,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 193--194
 
  []
 
-[14]
+[17]
 Underfull \hbox (badness 1297) in paragraph at lines 225--241
 $\OT1/cmr/m/n/14.4 0\OML/cmm/m/it/14.4 ; y[] \OT1/cmr/m/n/14.4 = 0\OML/cmm/m/it
 /14.4 ; y[] \OT1/cmr/m/n/14.4 = 0\OML/cmm/m/it/14.4 ; y[] \OT1/cmr/m/n/14.4 = 0
@@ -558,7 +813,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 225--241
 
  []
 
-[15]
+[18]
 Underfull \hbox (badness 10000) in paragraph at lines 242--243
 
  []
@@ -593,7 +848,7 @@ Overfull \hbox (10.3866pt too wide) in paragraph at lines 264--264
 [] 
  []
 
-[16]
+[19]
 Underfull \hbox (badness 10000) in paragraph at lines 269--271
 
  []
@@ -608,7 +863,7 @@ Overfull \hbox (2.99506pt too wide) in paragraph at lines 283--283
 [] 
  []
 
-[17]
+[20]
 
 LaTeX Warning: Command \cyrg invalid in math mode on input line 303.
 
@@ -626,7 +881,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 304--306
 
  []
 
-[18]
+[21]
 Underfull \hbox (badness 10000) in paragraph at lines 314--315
 
  []
@@ -641,7 +896,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 321--323
 
  []
 
-[19] [20
+[22] [23
 
 ]
 
@@ -650,57 +905,57 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<lda.png, id=81, 481.8pt x 361.35pt>
+<lda.png, id=91, 481.8pt x 361.35pt>
 File: lda.png Graphic file (type png)
  <use lda.png>
-Package pdftex.def Info: lda.png used on input line 416.
+Package pdftex.def Info: lda.png used on input line 417.
 (pdftex.def)             Requested size: 241.84842pt x 181.38583pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[21] [22 <D:/Study/5 –∫—É—Ä—Å/COURS_DIPL/TeX/lda.png>] [23
-
-] [24
+[24] [25 <D:/Study/5 –∫—É—Ä—Å/COURS_DIPL/TeX/lda.png>] [26
 
 ]
-<zigzag.jpg, id=96, 163.3603pt x 152.06813pt>
+
+LaTeX Warning: Citation `jpeg' on page 27 undefined on input line 444.
+
+[27
+
+] <zigzag.jpg, id=107, 163.3603pt x 152.06813pt>
 File: zigzag.jpg Graphic file (type jpg)
  <use zigzag.jpg>
-Package pdftex.def Info: zigzag.jpg used on input line 491.
+Package pdftex.def Info: zigzag.jpg used on input line 492.
 (pdftex.def)             Requested size: 241.84842pt x 225.12923pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<hist1.png, id=97, 462.528pt x 346.896pt>
+<hist1.png, id=108, 462.528pt x 346.896pt>
 File: hist1.png Graphic file (type png)
  <use hist1.png>
-Package pdftex.def Info: hist1.png used on input line 497.
+Package pdftex.def Info: hist1.png used on input line 498.
 (pdftex.def)             Requested size: 338.5863pt x 253.95184pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-) ("D:\Study\5 –∫—É—Ä—Å\COURS_DIPL\TeX\chapter_3.tex" [25] [26 <D:/Study/5 –∫—É
+) ("D:\Study\5 –∫—É—Ä—Å\COURS_DIPL\TeX\chapter_3.tex" [28] [29 <D:/Study/5 –∫—É
 —Ä—Å/COURS_DIPL/TeX/zigzag.jpg> <D:/Study/5 –∫—É—Ä—Å/COURS_DIPL/TeX/hist1.png>]
 {\Russian \CYRG \cyrl \cyra \cyrv \cyra } 3.
-<h2_01.png, id=106, 481.8pt x 361.35pt>
+<h2_01.png, id=116, 481.8pt x 361.35pt>
 File: h2_01.png Graphic file (type png)
  <use h2_01.png>
 Package pdftex.def Info: h2_01.png used on input line 5.
-(pdftex.def)             Requested size: 290.22105pt x 217.67181pt.
+(pdftex.def)             Requested size: 241.84842pt x 181.38583pt.
 
-<h2_03.png, id=107, 462.528pt x 346.896pt>
+<h2_03.png, id=117, 462.528pt x 346.896pt>
 File: h2_03.png Graphic file (type png)
  <use h2_03.png>
 Package pdftex.def Info: h2_03.png used on input line 10.
-(pdftex.def)             Requested size: 290.22105pt x 217.67754pt.
+(pdftex.def)             Requested size: 241.84842pt x 181.38736pt.
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<h2_05.png, id=108, 481.8pt x 361.35pt>
+<h2_05.png, id=118, 481.8pt x 361.35pt>
 File: h2_05.png Graphic file (type png)
  <use h2_05.png>
 Package pdftex.def Info: h2_05.png used on input line 15.
@@ -709,7 +964,7 @@ Package pdftex.def Info: h2_05.png used on input line 15.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<h2.png, id=109, 499.8675pt x 316.93407pt>
+<h2.png, id=119, 499.8675pt x 316.93407pt>
 File: h2.png Graphic file (type png)
  <use h2.png>
 Package pdftex.def Info: h2.png used on input line 20.
@@ -718,7 +973,7 @@ Package pdftex.def Info: h2.png used on input line 20.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<h3_05.png, id=110, 462.528pt x 346.896pt>
+<h3_05.png, id=120, 462.528pt x 346.896pt>
 File: h3_05.png Graphic file (type png)
  <use h3_05.png>
 Package pdftex.def Info: h3_05.png used on input line 26.
@@ -727,7 +982,7 @@ Package pdftex.def Info: h3_05.png used on input line 26.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<h3_03.png, id=111, 462.528pt x 346.896pt>
+<h3_03.png, id=121, 462.528pt x 346.896pt>
 File: h3_03.png Graphic file (type png)
  <use h3_03.png>
 Package pdftex.def Info: h3_03.png used on input line 31.
@@ -736,7 +991,7 @@ Package pdftex.def Info: h3_03.png used on input line 31.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<h3_01.png, id=112, 462.528pt x 346.896pt>
+<h3_01.png, id=122, 462.528pt x 346.896pt>
 File: h3_01.png Graphic file (type png)
  <use h3_01.png>
 Package pdftex.def Info: h3_01.png used on input line 36.
@@ -745,7 +1000,7 @@ Package pdftex.def Info: h3_01.png used on input line 36.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<h3.png, id=113, 472.01344pt x 314.67563pt>
+<h3.png, id=123, 472.01344pt x 314.67563pt>
 File: h3.png Graphic file (type png)
  <use h3.png>
 Package pdftex.def Info: h3.png used on input line 41.
@@ -754,7 +1009,7 @@ Package pdftex.def Info: h3.png used on input line 41.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<h4_05.png, id=114, 462.528pt x 346.896pt>
+<h4_05.png, id=124, 462.528pt x 346.896pt>
 File: h4_05.png Graphic file (type png)
  <use h4_05.png>
 Package pdftex.def Info: h4_05.png used on input line 46.
@@ -763,7 +1018,7 @@ Package pdftex.def Info: h4_05.png used on input line 46.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<h4_03.png, id=115, 462.528pt x 346.896pt>
+<h4_03.png, id=125, 462.528pt x 346.896pt>
 File: h4_03.png Graphic file (type png)
  <use h4_03.png>
 Package pdftex.def Info: h4_03.png used on input line 51.
@@ -772,7 +1027,7 @@ Package pdftex.def Info: h4_03.png used on input line 51.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<h4_01.png, id=116, 462.528pt x 346.896pt>
+<h4_01.png, id=126, 462.528pt x 346.896pt>
 File: h4_01.png Graphic file (type png)
  <use h4_01.png>
 Package pdftex.def Info: h4_01.png used on input line 56.
@@ -781,7 +1036,7 @@ Package pdftex.def Info: h4_01.png used on input line 56.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<h4.png, id=117, 419.31656pt x 269.50688pt>
+<h4.png, id=127, 419.31656pt x 269.50688pt>
 File: h4.png Graphic file (type png)
  <use h4.png>
 Package pdftex.def Info: h4.png used on input line 61.
@@ -790,76 +1045,272 @@ Package pdftex.def Info: h4.png used on input line 61.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<h_l.png, id=118, 549.9747pt x 474.0912pt>
-File: h_l.png Graphic file (type png)
- <use h_l.png>
-Package pdftex.def Info: h_l.png used on input line 67.
-(pdftex.def)             Requested size: 483.69684pt x 416.95558pt.
+<h_l2.png, id=128, 667.7748pt x 453.1329pt>
+File: h_l2.png Graphic file (type png)
+ <use h_l2.png>
+Package pdftex.def Info: h_l2.png used on input line 67.
+(pdftex.def)             Requested size: 483.69684pt x 328.23291pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-) ("D:\Study\5 –∫—É—Ä—Å\COURS_DIPL\TeX\concl.tex" [27
+) ("D:\Study\5 –∫—É—Ä—Å\COURS_DIPL\TeX\concl.tex" [30
 
- <D:/Study/5 –∫—É—Ä—Å/COURS_DIPL/TeX/h2_01.png>] [28 <D:/Study/5 –∫—É—Ä—Å/COURS
-_DIPL/TeX/h2_03.png> <D:/Study/5 –∫—É—Ä—Å/COURS_DIPL/TeX/h2_05.png>] [29 <D:/St
-udy/5 –∫—É—Ä—Å/COURS_DIPL/TeX/h2.png> <D:/Study/5 –∫—É—Ä—Å/COURS_DIPL/TeX/h3_05
-.png>] [30 <D:/Study/5 –∫—É—Ä—Å/COURS_DIPL/TeX/h3_03.png> <D:/Study/5 –∫—É—Ä—Å/
-COURS_DIPL/TeX/h3_01.png>] [31 <D:/Study/5 –∫—É—Ä—Å/COURS_DIPL/TeX/h3.png> <D:/
-Study/5 –∫—É—Ä—Å/COURS_DIPL/TeX/h4_05.png>] [32 <D:/Study/5 –∫—É—Ä—Å/COURS_DIPL
-/TeX/h4_03.png> <D:/Study/5 –∫—É—Ä—Å/COURS_DIPL/TeX/h4_01.png>] [33 <D:/Study/5
- –∫—É—Ä—Å/COURS_DIPL/TeX/h4.png>] [34 <D:/Study/5 –∫—É—Ä—Å/COURS_DIPL/TeX/h_l.p
-ng>])
-("D:\Study\5 –∫—É—Ä—Å\COURS_DIPL\TeX\referenses.tex" [35
+ <D:/Study/5 –∫—É—Ä—Å/COURS_DIPL/TeX/h2_01.png> <D:/Study/5 –∫—É—Ä—Å/COURS_DIPL
+/TeX/h2_03.png>] [31 <D:/Study/5 –∫—É—Ä—Å/COURS_DIPL/TeX/h2_05.png> <D:/Study/5
+ –∫—É—Ä—Å/COURS_DIPL/TeX/h2.png>] [32 <D:/Study/5 –∫—É—Ä—Å/COURS_DIPL/TeX/h3_05
+.png> <D:/Study/5 –∫—É—Ä—Å/COURS_DIPL/TeX/h3_03.png>] [33 <D:/Study/5 –∫—É—Ä—Å/
+COURS_DIPL/TeX/h3_01.png> <D:/Study/5 –∫—É—Ä—Å/COURS_DIPL/TeX/h3.png>] [34 <D:/
+Study/5 –∫—É—Ä—Å/COURS_DIPL/TeX/h4_05.png> <D:/Study/5 –∫—É—Ä—Å/COURS_DIPL/TeX/
+h4_03.png>] [35 <D:/Study/5 –∫—É—Ä—Å/COURS_DIPL/TeX/h4_01.png> <D:/Study/5 –∫—É
+—Ä—Å/COURS_DIPL/TeX/h4.png>] [36 <D:/Study/5 –∫—É—Ä—Å/COURS_DIPL/TeX/h_l2.png>]
+)
+("D:\Study\5 –∫—É—Ä—Å\COURS_DIPL\TeX\referenses.tex" [37
 
-] [36
+]
+! Missing number, treated as zero.
+<to be read again> 
+                   \let 
+l.8 	\setcounter{bibitem}\bibitem
+                                 {duhin}
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
 
-])
-("D:\Study\5 –∫—É—Ä—Å\COURS_DIPL\TeX\attA.tex"
-LaTeX Font Info:    Try loading font information for T2A+cmtt on input line 25.
+! Missing number, treated as zero.
+<to be read again> 
+                   \let 
+l.10 	\setcounter{bibitem}\bibitem
+                                  {agranovskiy}
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! Missing number, treated as zero.
+<to be read again> 
+                   \let 
+l.12 	\setcounter{bibitem}	\bibitem
+                                   {gribunin}
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! Missing number, treated as zero.
+<to be read again> 
+                   \let 
+l.14 	\setcounter{bibitem}	\bibitem
+                                   {jpeg}
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! Missing number, treated as zero.
+<to be read again> 
+                   \let 
+l.16 	\setcounter{bibitem}\bibitem
+                                  {panamarev}
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! Missing number, treated as zero.
+<to be read again> 
+                   \let 
+l.18 	\setcounter{bibitem}\bibitem
+                                  {varnoskiy}
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! Missing number, treated as zero.
+<to be read again> 
+                   \let 
+l.20 	\setcounter{bibitem}	\bibitem
+                                   {harin}
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! Missing number, treated as zero.
+<to be read again> 
+                   \let 
+l.22 	\setcounter{bibitem}\bibitem
+                                  {vecherko}
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+[38
+
+]) ("D:\Study\5 –∫—É—Ä—Å\COURS_DIPL\TeX\attA.tex"
+LaTeX Font Info:    Try loading font information for T2A+cmtt on input line 26.
 
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\cyrillic\t2acmtt.fd"
 File: t2acmtt.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
 )
 LaTeX Font Info:    Font shape `T2A/cmtt/bx/n' in size <10.95> not available
-(Font)              Font shape `T2A/cmtt/m/n' tried instead on input line 26.
- [37] [38]
-[39] [40] [41] [42] [43] [44] [45] [46] [47] [48] [49] [50] [51] [52] [53]
-[54] [55]) ("D:\Study\5 –∫—É—Ä—Å\COURS_DIPL\TeX\attB.tex" [56] [57]) [58]
-("D:\Study\5 –∫—É—Ä—Å\COURS_DIPL\TeX\main.aux")
+(Font)              Font shape `T2A/cmtt/m/n' tried instead on input line 27.
+ [39] [40]
+[41] [42] [43] [44] [45] [46] [47] [48] [49] [50] [51] [52] [53] [54] [55]
+[56] [57]) [58] ("D:\Study\5 –∫—É—Ä—Å\COURS_DIPL\TeX\main.aux"
+! Missing \endcsname inserted.
+<to be read again> 
+                   \relax 
+l.135 \bibcite{\relax }{2}
+                          
+The control sequence marked <to be read again> should
+not appear between \csname and \endcsname.
+
+! Extra \endcsname.
+\@newl@bel ... \bbl@tempa \csname #1@#2\endcsname 
+                                                  \def \bbl@tempb {#3}\@safe...
+l.135 \bibcite{\relax }{2}
+                          
+I'm ignoring this, since I wasn't doing a \csname.
+
+! Missing \endcsname inserted.
+<to be read again> 
+                   \relax 
+l.136 \bibcite{\relax }{3}
+                          
+The control sequence marked <to be read again> should
+not appear between \csname and \endcsname.
+
+! Extra \endcsname.
+\@newl@bel ... \bbl@tempa \csname #1@#2\endcsname 
+                                                  \def \bbl@tempb {#3}\@safe...
+l.136 \bibcite{\relax }{3}
+                          
+I'm ignoring this, since I wasn't doing a \csname.
+
+! Missing \endcsname inserted.
+<to be read again> 
+                   \relax 
+l.137 \bibcite{\relax }{4}
+                          
+The control sequence marked <to be read again> should
+not appear between \csname and \endcsname.
+
+! Extra \endcsname.
+\@newl@bel ... \bbl@tempa \csname #1@#2\endcsname 
+                                                  \def \bbl@tempb {#3}\@safe...
+l.137 \bibcite{\relax }{4}
+                          
+I'm ignoring this, since I wasn't doing a \csname.
+
+! Missing \endcsname inserted.
+<to be read again> 
+                   \relax 
+l.138 \bibcite{\relax }{5}
+                          
+The control sequence marked <to be read again> should
+not appear between \csname and \endcsname.
+
+! Extra \endcsname.
+\@newl@bel ... \bbl@tempa \csname #1@#2\endcsname 
+                                                  \def \bbl@tempb {#3}\@safe...
+l.138 \bibcite{\relax }{5}
+                          
+I'm ignoring this, since I wasn't doing a \csname.
+
+! Missing \endcsname inserted.
+<to be read again> 
+                   \relax 
+l.139 \bibcite{\relax }{6}
+                          
+The control sequence marked <to be read again> should
+not appear between \csname and \endcsname.
+
+! Extra \endcsname.
+\@newl@bel ... \bbl@tempa \csname #1@#2\endcsname 
+                                                  \def \bbl@tempb {#3}\@safe...
+l.139 \bibcite{\relax }{6}
+                          
+I'm ignoring this, since I wasn't doing a \csname.
+
+! Missing \endcsname inserted.
+<to be read again> 
+                   \relax 
+l.140 \bibcite{\relax }{7}
+                          
+The control sequence marked <to be read again> should
+not appear between \csname and \endcsname.
+
+! Extra \endcsname.
+\@newl@bel ... \bbl@tempa \csname #1@#2\endcsname 
+                                                  \def \bbl@tempb {#3}\@safe...
+l.140 \bibcite{\relax }{7}
+                          
+I'm ignoring this, since I wasn't doing a \csname.
+
+! Missing \endcsname inserted.
+<to be read again> 
+                   \relax 
+l.141 \bibcite{\relax }{8}
+                          
+The control sequence marked <to be read again> should
+not appear between \csname and \endcsname.
+
+! Extra \endcsname.
+\@newl@bel ... \bbl@tempa \csname #1@#2\endcsname 
+                                                  \def \bbl@tempb {#3}\@safe...
+l.141 \bibcite{\relax }{8}
+                          
+I'm ignoring this, since I wasn't doing a \csname.
+
+! Missing \endcsname inserted.
+<to be read again> 
+                   \relax 
+l.142 \bibcite{\relax }{9}
+                          
+The control sequence marked <to be read again> should
+not appear between \csname and \endcsname.
+
+! Extra \endcsname.
+\@newl@bel ... \bbl@tempa \csname #1@#2\endcsname 
+                                                  \def \bbl@tempb {#3}\@safe...
+l.142 \bibcite{\relax }{9}
+                          
+I'm ignoring this, since I wasn't doing a \csname.
+
+)
+
+LaTeX Warning: There were undefined references.
+
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 6496 strings out of 493921
- 82867 string characters out of 3147279
- 237951 words of memory out of 3000000
- 9639 multiletter control sequences out of 15000+200000
- 19350 words of font info for 54 fonts, out of 3000000 for 9000
+ 6606 strings out of 493921
+ 84919 string characters out of 3147279
+ 239877 words of memory out of 3000000
+ 9737 multiletter control sequences out of 15000+200000
+ 20241 words of font info for 55 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 29i,12n,40p,1448b,1817s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 29i,12n,40p,1448b,1828s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\Andrey\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\lh\lh-t2a\dpi600\l
 att1095.pk> <C:\Users\Andrey\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\lh\lh-t2a
 \dpi600\lati1440.pk> <C:\Users\Andrey\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\
-unknown\unknown\dpi600\larm1200.pk> <C:\Users\Andrey\AppData\Local\MiKTeX\2.9\f
-onts\pk\ljfour\lh\lh-t2a\dpi600\labx1728.pk> <C:\Users\Andrey\AppData\Local\MiK
-TeX\2.9\fonts\pk\ljfour\lh\lh-t2a\dpi600\labx1440.pk> <C:\Users\Andrey\AppData\
-Local\MiKTeX\2.9\fonts\pk\ljfour\lh\lh-t2a\dpi600\larm1440.pk> <C:\Users\Andrey
-\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\lh\lh-t2a\dpi600\labx1200.pk><C:/Prog
-ram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program File
-s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX
- 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX 2.9/fon
-ts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/
-public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/am
-sfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
-/cmr7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pf
-b><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Pro
-gram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on main.pdf (58 pages, 691472 bytes).
+lh\lh-t2a\dpi600\labi1440.pk> <C:\Users\Andrey\AppData\Local\MiKTeX\2.9\fonts\p
+k\ljfour\unknown\unknown\dpi600\larm1200.pk> <C:\Users\Andrey\AppData\Local\MiK
+TeX\2.9\fonts\pk\ljfour\lh\lh-t2a\dpi600\labx1728.pk> <C:\Users\Andrey\AppData\
+Local\MiKTeX\2.9\fonts\pk\ljfour\lh\lh-t2a\dpi600\labx1440.pk> <C:\Users\Andrey
+\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\lh\lh-t2a\dpi600\larm1440.pk> <C:\Use
+rs\Andrey\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\lh\lh-t2a\dpi600\labx1200.pk
+><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Pro
+gram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Fil
+es/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTe
+X 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Program Files/MiKTeX 2.9/fon
+ts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/
+public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/am
+sfonts/cm/cmr7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/
+cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pf
+b><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msam10.pfb>
+Output written on main.pdf (58 pages, 728303 bytes).
 PDF statistics:
- 742 PDF objects out of 1000 (max. 8388607)
+ 822 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  81 words of extra memory for PDF output out of 10000 (max. 10000000)
 
