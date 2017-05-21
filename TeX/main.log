@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.5.17)  21 MAY 2017 20:37
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.5.17)  21 MAY 2017 23:27
 entering extended mode
 **main.tex
 ("D:\Study\5 РєСѓСЂСЃ\COURS_DIPL\TeX\main.tex"
@@ -404,161 +404,8 @@ File: t2acmr.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
 
 LaTeX Warning: Label `tab:canonsummary' multiply defined.
 
-! Missing \endcsname inserted.
-<to be read again> 
-                   \relax 
-l.135 \bibcite{\relax }{2}
-                          
-The control sequence marked <to be read again> should
-not appear between \csname and \endcsname.
 
-! Extra \endcsname.
-\@ifundefined ...dafter \ifx \csname #1\endcsname 
-                                                  \relax \expandafter \@firs...
-l.135 \bibcite{\relax }{2}
-                          
-I'm ignoring this, since I wasn't doing a \csname.
-
-! Missing \endcsname inserted.
-<to be read again> 
-                   \relax 
-l.135 \bibcite{\relax }{2}
-                          
-The control sequence marked <to be read again> should
-not appear between \csname and \endcsname.
-
-! Missing \endcsname inserted.
-<to be read again> 
-                   \relax 
-l.136 \bibcite{\relax }{3}
-                          
-The control sequence marked <to be read again> should
-not appear between \csname and \endcsname.
-
-
-LaTeX Warning: Label `\relax ' multiply defined.
-
-! Missing \endcsname inserted.
-<to be read again> 
-                   \relax 
-l.136 \bibcite{\relax }{3}
-                          
-The control sequence marked <to be read again> should
-not appear between \csname and \endcsname.
-
-! Missing \endcsname inserted.
-<to be read again> 
-                   \relax 
-l.137 \bibcite{\relax }{4}
-                          
-The control sequence marked <to be read again> should
-not appear between \csname and \endcsname.
-
-
-LaTeX Warning: Label `\relax ' multiply defined.
-
-! Missing \endcsname inserted.
-<to be read again> 
-                   \relax 
-l.137 \bibcite{\relax }{4}
-                          
-The control sequence marked <to be read again> should
-not appear between \csname and \endcsname.
-
-! Missing \endcsname inserted.
-<to be read again> 
-                   \relax 
-l.138 \bibcite{\relax }{5}
-                          
-The control sequence marked <to be read again> should
-not appear between \csname and \endcsname.
-
-
-LaTeX Warning: Label `\relax ' multiply defined.
-
-! Missing \endcsname inserted.
-<to be read again> 
-                   \relax 
-l.138 \bibcite{\relax }{5}
-                          
-The control sequence marked <to be read again> should
-not appear between \csname and \endcsname.
-
-! Missing \endcsname inserted.
-<to be read again> 
-                   \relax 
-l.139 \bibcite{\relax }{6}
-                          
-The control sequence marked <to be read again> should
-not appear between \csname and \endcsname.
-
-
-LaTeX Warning: Label `\relax ' multiply defined.
-
-! Missing \endcsname inserted.
-<to be read again> 
-                   \relax 
-l.139 \bibcite{\relax }{6}
-                          
-The control sequence marked <to be read again> should
-not appear between \csname and \endcsname.
-
-! Missing \endcsname inserted.
-<to be read again> 
-                   \relax 
-l.140 \bibcite{\relax }{7}
-                          
-The control sequence marked <to be read again> should
-not appear between \csname and \endcsname.
-
-
-LaTeX Warning: Label `\relax ' multiply defined.
-
-! Missing \endcsname inserted.
-<to be read again> 
-                   \relax 
-l.140 \bibcite{\relax }{7}
-                          
-The control sequence marked <to be read again> should
-not appear between \csname and \endcsname.
-
-! Missing \endcsname inserted.
-<to be read again> 
-                   \relax 
-l.141 \bibcite{\relax }{8}
-                          
-The control sequence marked <to be read again> should
-not appear between \csname and \endcsname.
-
-
-LaTeX Warning: Label `\relax ' multiply defined.
-
-! Missing \endcsname inserted.
-<to be read again> 
-                   \relax 
-l.141 \bibcite{\relax }{8}
-                          
-The control sequence marked <to be read again> should
-not appear between \csname and \endcsname.
-
-! Missing \endcsname inserted.
-<to be read again> 
-                   \relax 
-l.142 \bibcite{\relax }{9}
-                          
-The control sequence marked <to be read again> should
-not appear between \csname and \endcsname.
-
-
-LaTeX Warning: Label `\relax ' multiply defined.
-
-! Missing \endcsname inserted.
-<to be read again> 
-                   \relax 
-l.142 \bibcite{\relax }{9}
-                          
-The control sequence marked <to be read again> should
-not appear between \csname and \endcsname.
+LaTeX Warning: Label `attA:shuffl-section' multiply defined.
 
 )
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 3.
@@ -608,12 +455,12 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 38.
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Overfull \hbox (23.62482pt too wide) in paragraph at lines 38--56
+Overfull \hbox (23.62482pt too wide) in paragraph at lines 38--55
 [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 38--56
+Underfull \hbox (badness 10000) in paragraph at lines 38--55
 
  []
 
@@ -649,64 +496,18 @@ Underfull \hbox (badness 5847) in paragraph at lines 48--49
 
 ) ("D:\Study\5 РєСѓСЂСЃ\COURS_DIPL\TeX\intro.tex" [6
 
-]
-
-LaTeX Warning: Citation `varnoskiy' on page 7 undefined on input line 5.
-
-
-LaTeX Warning: Citation `panamarev' on page 7 undefined on input line 13.
-
-) ("D:\Study\5 РєСѓСЂСЃ\COURS_DIPL\TeX\chapter_1.tex" [7
+])
+("D:\Study\5 РєСѓСЂСЃ\COURS_DIPL\TeX\chapter_1.tex" [7
 
 ]
 {\Russian \CYRG \cyrl \cyra \cyrv \cyra } 1.
-
-LaTeX Warning: Citation `agranovskiy' on page 8 undefined on input line 5.
-
-
-LaTeX Warning: Citation `agranovskiy' on page 8 undefined on input line 14.
-
-
-LaTeX Warning: Citation `agranovskiy' on page 8 undefined on input line 18.
-
-
-LaTeX Warning: Citation `agranovskiy' on page 8 undefined on input line 22.
-
-
-LaTeX Warning: Citation `agranovskiy' on page 8 undefined on input line 26.
-
-
-LaTeX Warning: Citation `agranovskiy' on page 8 undefined on input line 30.
-
-
-LaTeX Warning: Citation `agranovskiy' on page 8 undefined on input line 34.
-
-
-LaTeX Warning: Citation `agranovskiy' on page 8 undefined on input line 41.
-
 [8
 
 ]
-
-LaTeX Warning: Citation `agranovskiy' on page 9 undefined on input line 45.
-
-
-LaTeX Warning: Citation `agranovskiy' on page 9 undefined on input line 49.
-
-
-LaTeX Warning: Citation `duhin' on page 9 undefined on input line 57.
-
-
 Underfull \hbox (badness 1642) in paragraph at lines 57--58
 \T2A/cmr/m/n/14.4 ни-мать устрой-ство, по-рож-да-ю-щее по-сле-до-ва-тель-но-сти
 , со-став-лен-ные из
  []
-
-
-LaTeX Warning: Citation `duhin' on page 9 undefined on input line 60.
-
-
-LaTeX Warning: Citation `duhin' on page 9 undefined on input line 68.
 
 [9] [10
 
@@ -715,17 +516,9 @@ LaTeX Warning: Citation `duhin' on page 9 undefined on input line 68.
 [12
 
 ] [13]
-
-LaTeX Warning: Citation `duhin' on page 14 undefined on input line 92.
-
-
-LaTeX Warning: Citation `duhin' on page 14 undefined on input line 95.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 95--97
-[]\T2A/cmr/bx/n/14.4 Определение 2.2.2. [] \T2A/cmr/m/n/14.4 [\T2A/cmr/bx/n/14.
-4 ?\T2A/cmr/m/n/14.4 ] Ве-ли-чи-на: $\OML/cmm/m/it/14.4 H[] \OT1/cmr/m/n/14.4 =
-$
+[]\T2A/cmr/bx/n/14.4 Определение 2.2.2. [] \T2A/cmr/m/n/14.4 [2] Ве-ли-чи-на: $
+\OML/cmm/m/it/14.4 H[] \OT1/cmr/m/n/14.4 =$
  []
 
 
@@ -753,16 +546,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 103--105
 
  []
 
-
-LaTeX Warning: Citation `duhin' on page 15 undefined on input line 114.
-
 [15]
 Overfull \hbox (7.53267pt too wide) in paragraph at lines 155--155
 [] 
  []
-
-
-LaTeX Warning: Citation `duhin' on page 16 undefined on input line 167.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 173--177
@@ -916,13 +703,10 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 [24] [25 <D:/Study/5 РєСѓСЂСЃ/COURS_DIPL/TeX/lda.png>] [26
 
+] [27
+
 ]
-
-LaTeX Warning: Citation `jpeg' on page 27 undefined on input line 444.
-
-[27
-
-] <zigzag.jpg, id=107, 163.3603pt x 152.06813pt>
+<zigzag.jpg, id=107, 163.3603pt x 152.06813pt>
 File: zigzag.jpg Graphic file (type jpg)
  <use zigzag.jpg>
 Package pdftex.def Info: zigzag.jpg used on input line 492.
@@ -1067,229 +851,37 @@ h4_03.png>] [35 <D:/Study/5 РєСѓСЂСЃ/COURS_DIPL/TeX/h4_01.png> <D:/Study/5 РєСѓ
 )
 ("D:\Study\5 РєСѓСЂСЃ\COURS_DIPL\TeX\referenses.tex" [37
 
-]
-! Missing number, treated as zero.
-<to be read again> 
-                   \let 
-l.8 	\setcounter{bibitem}\bibitem
-                                 {duhin}
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
+] [38
 
-! Missing number, treated as zero.
-<to be read again> 
-                   \let 
-l.10 	\setcounter{bibitem}\bibitem
-                                  {agranovskiy}
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-! Missing number, treated as zero.
-<to be read again> 
-                   \let 
-l.12 	\setcounter{bibitem}	\bibitem
-                                   {gribunin}
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-! Missing number, treated as zero.
-<to be read again> 
-                   \let 
-l.14 	\setcounter{bibitem}	\bibitem
-                                   {jpeg}
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-! Missing number, treated as zero.
-<to be read again> 
-                   \let 
-l.16 	\setcounter{bibitem}\bibitem
-                                  {panamarev}
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-! Missing number, treated as zero.
-<to be read again> 
-                   \let 
-l.18 	\setcounter{bibitem}\bibitem
-                                  {varnoskiy}
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-! Missing number, treated as zero.
-<to be read again> 
-                   \let 
-l.20 	\setcounter{bibitem}	\bibitem
-                                   {harin}
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-! Missing number, treated as zero.
-<to be read again> 
-                   \let 
-l.22 	\setcounter{bibitem}\bibitem
-                                  {vecherko}
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-[38
-
-]) ("D:\Study\5 РєСѓСЂСЃ\COURS_DIPL\TeX\attA.tex"
-LaTeX Font Info:    Try loading font information for T2A+cmtt on input line 26.
+])
+("D:\Study\5 РєСѓСЂСЃ\COURS_DIPL\TeX\attA.tex"
+LaTeX Font Info:    Try loading font information for T2A+cmtt on input line 24.
 
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\cyrillic\t2acmtt.fd"
 File: t2acmtt.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
 )
 LaTeX Font Info:    Font shape `T2A/cmtt/bx/n' in size <10.95> not available
-(Font)              Font shape `T2A/cmtt/m/n' tried instead on input line 27.
+(Font)              Font shape `T2A/cmtt/m/n' tried instead on input line 25.
  [39] [40]
-[41] [42] [43] [44] [45] [46] [47] [48] [49] [50] [51] [52] [53] [54] [55]
-[56] [57]) [58] ("D:\Study\5 РєСѓСЂСЃ\COURS_DIPL\TeX\main.aux"
-! Missing \endcsname inserted.
-<to be read again> 
-                   \relax 
-l.135 \bibcite{\relax }{2}
-                          
-The control sequence marked <to be read again> should
-not appear between \csname and \endcsname.
+[41] [42] [43] [44] [45] [46]
+Overfull \hbox (93.09137pt too wide) in paragraph at lines 468--469
+[][][][][][][][][][][][][][][][][][][][][][][][]  
+ []
 
-! Extra \endcsname.
-\@newl@bel ... \bbl@tempa \csname #1@#2\endcsname 
-                                                  \def \bbl@tempb {#3}\@safe...
-l.135 \bibcite{\relax }{2}
-                          
-I'm ignoring this, since I wasn't doing a \csname.
-
-! Missing \endcsname inserted.
-<to be read again> 
-                   \relax 
-l.136 \bibcite{\relax }{3}
-                          
-The control sequence marked <to be read again> should
-not appear between \csname and \endcsname.
-
-! Extra \endcsname.
-\@newl@bel ... \bbl@tempa \csname #1@#2\endcsname 
-                                                  \def \bbl@tempb {#3}\@safe...
-l.136 \bibcite{\relax }{3}
-                          
-I'm ignoring this, since I wasn't doing a \csname.
-
-! Missing \endcsname inserted.
-<to be read again> 
-                   \relax 
-l.137 \bibcite{\relax }{4}
-                          
-The control sequence marked <to be read again> should
-not appear between \csname and \endcsname.
-
-! Extra \endcsname.
-\@newl@bel ... \bbl@tempa \csname #1@#2\endcsname 
-                                                  \def \bbl@tempb {#3}\@safe...
-l.137 \bibcite{\relax }{4}
-                          
-I'm ignoring this, since I wasn't doing a \csname.
-
-! Missing \endcsname inserted.
-<to be read again> 
-                   \relax 
-l.138 \bibcite{\relax }{5}
-                          
-The control sequence marked <to be read again> should
-not appear between \csname and \endcsname.
-
-! Extra \endcsname.
-\@newl@bel ... \bbl@tempa \csname #1@#2\endcsname 
-                                                  \def \bbl@tempb {#3}\@safe...
-l.138 \bibcite{\relax }{5}
-                          
-I'm ignoring this, since I wasn't doing a \csname.
-
-! Missing \endcsname inserted.
-<to be read again> 
-                   \relax 
-l.139 \bibcite{\relax }{6}
-                          
-The control sequence marked <to be read again> should
-not appear between \csname and \endcsname.
-
-! Extra \endcsname.
-\@newl@bel ... \bbl@tempa \csname #1@#2\endcsname 
-                                                  \def \bbl@tempb {#3}\@safe...
-l.139 \bibcite{\relax }{6}
-                          
-I'm ignoring this, since I wasn't doing a \csname.
-
-! Missing \endcsname inserted.
-<to be read again> 
-                   \relax 
-l.140 \bibcite{\relax }{7}
-                          
-The control sequence marked <to be read again> should
-not appear between \csname and \endcsname.
-
-! Extra \endcsname.
-\@newl@bel ... \bbl@tempa \csname #1@#2\endcsname 
-                                                  \def \bbl@tempb {#3}\@safe...
-l.140 \bibcite{\relax }{7}
-                          
-I'm ignoring this, since I wasn't doing a \csname.
-
-! Missing \endcsname inserted.
-<to be read again> 
-                   \relax 
-l.141 \bibcite{\relax }{8}
-                          
-The control sequence marked <to be read again> should
-not appear between \csname and \endcsname.
-
-! Extra \endcsname.
-\@newl@bel ... \bbl@tempa \csname #1@#2\endcsname 
-                                                  \def \bbl@tempb {#3}\@safe...
-l.141 \bibcite{\relax }{8}
-                          
-I'm ignoring this, since I wasn't doing a \csname.
-
-! Missing \endcsname inserted.
-<to be read again> 
-                   \relax 
-l.142 \bibcite{\relax }{9}
-                          
-The control sequence marked <to be read again> should
-not appear between \csname and \endcsname.
-
-! Extra \endcsname.
-\@newl@bel ... \bbl@tempa \csname #1@#2\endcsname 
-                                                  \def \bbl@tempb {#3}\@safe...
-l.142 \bibcite{\relax }{9}
-                          
-I'm ignoring this, since I wasn't doing a \csname.
-
-)
-
-LaTeX Warning: There were undefined references.
-
+[47]) [48] ("D:\Study\5 РєСѓСЂСЃ\COURS_DIPL\TeX\main.aux")
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 6606 strings out of 493921
- 84919 string characters out of 3147279
- 239877 words of memory out of 3000000
- 9737 multiletter control sequences out of 15000+200000
+ 6476 strings out of 493921
+ 82888 string characters out of 3147279
+ 220877 words of memory out of 3000000
+ 9607 multiletter control sequences out of 15000+200000
  20241 words of font info for 55 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 29i,12n,40p,1448b,1828s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 29i,12n,40p,1448b,1826s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\Andrey\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\lh\lh-t2a\dpi600\l
 att1095.pk> <C:\Users\Andrey\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\lh\lh-t2a
 \dpi600\lati1440.pk> <C:\Users\Andrey\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\
@@ -1308,9 +900,9 @@ public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/am
 sfonts/cm/cmr7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/
 cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pf
 b><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on main.pdf (58 pages, 728303 bytes).
+Output written on main.pdf (48 pages, 694857 bytes).
 PDF statistics:
- 822 PDF objects out of 1000 (max. 8388607)
+ 796 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  81 words of extra memory for PDF output out of 10000 (max. 10000000)
 
