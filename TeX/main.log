@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.5.17)  22 MAY 2017 01:55
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.5.17)  22 MAY 2017 17:58
 entering extended mode
 **main.tex
 ("D:\Study\5 РєСѓСЂСЃ\COURS_DIPL\TeX\main.tex"
@@ -503,12 +503,26 @@ Underfull \hbox (badness 5847) in paragraph at lines 48--49
 
 ]
 {\Russian \CYRG \cyrl \cyra \cyrv \cyra } 1.
+
+Underfull \hbox (badness 3138) in paragraph at lines 8--9
+[]\T2A/cmr/m/n/14.4 Создание труд-но-стей для об-на-ру-же-ния, из-вле-че-ния и 
+мо-ди-фи-ка-
+ []
+
 [8
 
 ]
 Underfull \hbox (badness 1642) in paragraph at lines 57--58
 \T2A/cmr/m/n/14.4 ни-мать устрой-ство, по-рож-да-ю-щее по-сле-до-ва-тель-но-сти
 , со-став-лен-ные из
+ []
+
+
+Underfull \hbox (badness 1009) in paragraph at lines 57--58
+\T2A/cmr/m/n/14.4 но-стей по-рож-да-ют-ся в дис-крет-ный мо-мент времени:$\OML/
+cmm/m/it/14.4 t \OT1/cmr/m/n/14.4 = 0\OML/cmm/m/it/14.4 ; \OT1/cmr/m/n/14.4 1\O
+ML/cmm/m/it/14.4 ; \OT1/cmr/m/n/14.4 2\OML/cmm/m/it/14.4 ; :::\OT1/cmr/m/n/14.4
+ ; \OML/cmm/m/it/14.4 t \OT1/cmr/m/n/14.4 =$
  []
 
 [9] [10
@@ -905,9 +919,9 @@ public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/am
 sfonts/cm/cmr7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/
 cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pf
 b><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on main.pdf (49 pages, 703302 bytes).
+Output written on main.pdf (49 pages, 703723 bytes).
 PDF statistics:
- 807 PDF objects out of 1000 (max. 8388607)
+ 808 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  101 words of extra memory for PDF output out of 10000 (max. 10000000)
 

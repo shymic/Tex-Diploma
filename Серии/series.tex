@@ -1,3 +1,4 @@
+
  \documentclass[a4paper,12pt]{article}
  
  \usepackage[utf8]{inputenc}
@@ -20,7 +21,7 @@
  
  \begin{document}
 
-	Рассмотрим последовательность с вкраплениями, задавемую следующим образом:
+	Рассмотрим последовательность с вкраплениями, задаваемую следующим образом:
 	\begin{gather*}
 	1 - \nu_1,\\
 	...,\\
@@ -104,7 +105,7 @@
     Отсюда 
     \begin{gather*}
     P\{Y\}=P\{Y|w(\gamma)=0\} + \delta P\{Y|w(\gamma)=1\}= \frac{1}{2^{T-1}}(1+\varepsilon)^{T-\sum\limits_{s=1}^{k}\nu_s-1} (1-\varepsilon)^{\sum\limits_{s=1}^{k}\nu_s-1} +\\ \delta \biggl( \frac{1}{2^T}(1+\varepsilon)^{T-\sum\limits_{s=1}^{k}\nu_s-1-2} (1-\varepsilon)^{\sum\limits_{s=1}^{k}\nu_s-2}\bigl(-\frac{3}{2}\varepsilon^4-\frac{5}{2}\varepsilon^3-\frac{5}{2}\varepsilon^2+\frac{3}{2}\varepsilon + 7\bigl) \biggl) = \\
-    \frac{1}{2^T-1}(1+\varepsilon)^{T-\sum\limits_{s=1}^{k}\nu_s-1-2} (1-\varepsilon)^{\sum\limits_{s=1}^{k}\nu_s-2}\bigl(-\frac{3}{4}\varepsilon^4-\frac{5}{4}\varepsilon^3-\frac{9}{4}\varepsilon^2+\frac{3}{4}\varepsilon + \frac{9}{2}\bigl)
+    \frac{1}{2^T-1}(1+\varepsilon)^{T-\sum\limits_{s=1}^{k}\nu_s-1-2} (1-\varepsilon)^{\sum\limits_{s=1}^{k}\nu_s-2}\biggl((1+\varepsilon)(1-\varepsilon)-\delta\bigl(\frac{3}{4}\varepsilon^4+\frac{5}{4}\varepsilon^3+\frac{5}{4}\varepsilon^2-\frac{3}{4}\varepsilon - \frac{7}{2}\bigl)\biggl)
     \end{gather*}
     
     
