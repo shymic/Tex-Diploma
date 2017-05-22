@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.5.17)  27 FEB 2017 00:32
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.5.17)  22 MAY 2017 03:27
 entering extended mode
 **series.tex
-("D:\Study\5 курс\КУРСАЧ ДИПЛОМ\Серии\series.tex"
+("D:\Study\5 курс\COURS_DIPL\Серии\series.tex"
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
 abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
@@ -622,7 +622,7 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 \c@lemma=\count105
 \c@theorem=\count106
 
-("D:\Study\5 курс\КУРСАЧ ДИПЛОМ\Серии\series.aux"
+("D:\Study\5 курс\COURS_DIPL\Серии\series.aux"
 LaTeX Font Info:    Try loading font information for T2A+cmr on input line 3.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\cyrillic\t2acmr.fd"
@@ -699,48 +699,36 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 24.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-Underfull \hbox (badness 10000) in paragraph at lines 66--67
-
- []
-
-
-Overfull \hbox (7.07613pt too wide) detected at line 69
-\OML/cmm/m/it/12 P[] \OT1/cmr/m/n/12 = [][] [](1 + \OML/cmm/m/it/12 "\OT1/cmr/m
-/n/12 )[](1 \OMS/cmsy/m/n/12   \OML/cmm/m/it/12 "\OT1/cmr/m/n/12 )\OML/cmm/m/it
-/12 [][][][] []\OT1/cmr/m/n/12 (1 + \OML/cmm/m/it/12 "\OT1/cmr/m/n/12 )[](1 \O
-MS/cmsy/m/n/12   \OML/cmm/m/it/12 "\OT1/cmr/m/n/12 )[]\OML/cmm/m/it/12 [][][][
-] []\OT1/cmr/m/n/12 (1 + \OML/cmm/m/it/12 "\OT1/cmr/m/n/12 )[](1 \OMS/cmsy/m/n/
-12   \OML/cmm/m/it/12 "\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 [][]\OT1/cmr/m/n/12 ;
-
- []
-
-[1
+) [1
 
 {C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
-("D:\Study\5 курс\КУРСАЧ ДИПЛОМ\Серии\series.aux") ) 
+Overfull \hbox (61.10701pt too wide) in paragraph at lines 93--93
+[] 
+ []
+
+[2] [3] ("D:\Study\5 курс\COURS_DIPL\Серии\series.aux") ) 
 Here is how much of TeX's memory you used:
- 3847 strings out of 493921
- 45948 string characters out of 3147279
- 112458 words of memory out of 3000000
- 7071 multiletter control sequences out of 15000+200000
- 12102 words of font info for 39 fonts, out of 3000000 for 9000
+ 3842 strings out of 493921
+ 45797 string characters out of 3147279
+ 121458 words of memory out of 3000000
+ 7068 multiletter control sequences out of 15000+200000
+ 11457 words of font info for 36 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 27i,9n,26p,306b,145s stack positions out of 5000i,500n,10000p,200000b,50000s
- <C:\U
-sers\Andrey\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\unknown\unknown\dpi600\lar
-m1200.pk><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb
-><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Pro
-gram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Program File
-s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX 
-2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts
-/type1/public/amsfonts/cm/cmr6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/pub
-lic/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfon
-ts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
-sy8.pfb>
-Output written on series.pdf (1 page, 94323 bytes).
+ 27i,12n,26p,476b,147s stack positions out of 5000i,500n,10000p,200000b,50000s
+ <C:\Users\An
+drey\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\unknown\unknown\dpi600\larm1200.p
+k><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Pr
+ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cmextra/cmex8.pfb><C:/Progra
+m Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/
+MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Program Files/MiKTeX 2.
+9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/fonts/t
+ype1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/publ
+ic/amsfonts/cm/cmr6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfont
+s/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy1
+0.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
+Output written on series.pdf (3 pages, 108713 bytes).
 PDF statistics:
- 86 PDF objects out of 1000 (max. 8388607)
+ 94 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
