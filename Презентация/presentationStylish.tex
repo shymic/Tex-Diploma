@@ -1,0 +1,399 @@
+%!TEX TS-program = xelatex
+\documentclass[notheorems]{beamer}
+
+%\usepackage{beamerthemeBSU} % Подгружаем тему
+
+%%% Работа с русским языком и шрифтами
+\usepackage[english,russian]{babel}   % загружает пакет многоязыковой верстки
+%\usepackage{fontspec}      % подготавливает загрузку шрифтов Open Type, True Type и др.
+%\defaultfontfeatures{Ligatures={TeX},Renderer=Basic}  % свойства шрифтов по умолчанию
+%\setmainfont[Ligatures={TeX,Historic}]{Arial} %TODO: Helvetica Light Normal
+%\setsansfont{Arial}  %TODO: Helvetica Light Normal
+%\setmonofont{Courier New}
+
+% Оформление теорем, лемм и т.д.
+\theoremstyle{plain}
+\newtheorem{Theorem}{Теорема}[]
+\newtheorem{Lemma}{Лемма}[]
+\newtheorem{Proposition}{Предложение}[]
+\newtheorem{Corollary}{Следствие}[]
+\newtheorem{Statement}{Утверждение}[]
+
+\theoremstyle{definition}
+\newtheorem{Definition}{Определение}[]
+\newtheorem{Conjecture}{Гипотеза}[]
+\newtheorem{Algorithm}{Алгоритм}[]
+\newtheorem{Property}{Свойство}[]
+
+\theoremstyle{remark}
+\newtheorem{Remark}{Замечание}[]
+\newtheorem{Example}{Пример}[]
+\newtheorem{Note}{Примечание}[]
+\newtheorem{Case}{Случай}[]
+\newtheorem{Assumption}{Предположение}[]
+
+\uselanguage{russian}
+\languagepath{russian}
+\deftranslation[to=russian]{Theorem}{Теорема}
+\deftranslation[to=russian]{Lemma}{Лемма}
+\deftranslation[to=russian]{Definition}{Определение}
+\deftranslation[to=russian]{Definitions}{Определения}
+\deftranslation[to=russian]{Corollary}{Следствие}
+\deftranslation[to=russian]{Fact}{Факт}
+\deftranslation[to=russian]{Example}{Пример}
+\deftranslation[to=russian]{Examples}{Примеры}
+
+\usepackage{multicol}       % Несколько колонок
+\graphicspath{{graphics/}}    % Папка с картинками
+%%% Информация об авторе и выступлении
+\title[]{ОБНАРУЖЕНИЕ ВКРАПЛЕНИЙ В ДВОИЧНУЮ ЦЕПЬ МАРКОВА НА ОСНОВЕ ЭНТРОПИЙНЫХ ХАРАКТЕРИСТИК}
+\author[А. Ч. Шимко]{Андрей Чеславович Шимко\\ \smallskip Научный руководитель: Егор Валентинович Вечерко}
+\institute[ММАД, ФПМИ, БГУ]{Факультет прикладной математики и информатики \\ \smallskip Кафедра математического моделирования и анализа данных}
+\date{Минск, \the\year}
+
+\begin{document}
+
+\frame[plain]{\titlepage}
+
+
+\section{Математическая модель}
+\begin{frame}
+\frametitle{Математическая модель}
+\begin{footnotesize}
+Дана последовательность случайных величин распределенных по нормальному закону
+
+\begin{equation}\label{container}
+\{x_t\}~\text{ЦМ(1),} x_i\in V=\{0,1\}, i = \overline{1,T}
+\end{equation}
+\begin{equation}
+\pi = (\frac{1}{2}, \frac{1}{2}), P(\varepsilon)=\frac{1}{2}\bigl( \begin{matrix}
+1+\varepsilon,  1-\varepsilon\\
+1-\varepsilon,  1+\varepsilon
+\end{matrix}\bigl), |\varepsilon|<1, \varepsilon \neq 0.
+\end{equation}
+Сообщение
+\begin{equation}
+\mathcal{L}{m_t} = Bi(1, \theta), m_i \in V = {0, 1}, i = \overline{1,\tau},
+\end{equation}
+Ключ
+\begin{equation}
+\mathcal{L}{\gamma_t} = Bi(1, \delta), \gamma_i \in V = {0, 1}, i = \overline{1,T};
+\end{equation}
+И задано функциональное преобразование
+\begin{equation}\label{rule}
+y_t=\begin{cases}
+x_t,\gamma_t=0;\\
+m_{\tau_t}, \gamma_t=1;
+\end{cases}=(1-\gamma_t)x_t+\gamma_t m_{\tau_t}, \text{где } \tau_t=\sum\limits_{j=1}^{t}\gamma_j
+\end{equation}
+\end{footnotesize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{}
+\begin{footnotesize}
+Введем понятие энтропии на знак для l-граммы:\\
+\begin{equation}
+\label{entropy L}
+H_l(\delta) = -\frac{1}{l} \sum_{(a_1, ..., a_l)\in \{0, 1\}}P\{y_{t-l}=a_1,..., y_{t-1}=a_l\}\log{P\{y_{t-l}=a_1, ..., y_{t-1}=a_l\}}.
+\end{equation}
+\begin{Definition} 
+	Величина 
+	\begin{equation}\label{own:information}I\{b_i\}=-\log p_i
+	\end{equation}
+	называется собственной информацией, содержащейся в исходе $b_i \in B$. 
+\end{Definition}
+Величина $I\{b_i\}$ изменяется от нуля в случае
+реализации достоверного исхода до бесконечности, когда $p(b_i)=p_i\rightarrow 0$.
+Величину $I\{b_i\}$ можно интерпретировать как априорную неопределенность события $\{\xi=b_i\}$.
+Случайная величина $I\{\xi\}$ имеет математическое ожидание
+\begin{equation}
+EI\{\xi\}=-\sum_{b_i \in B}p_i\log p_i.
+\end{equation}
+\end{footnotesize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Оценка энтропии биграммы}
+\begin{footnotesize}
+\begin{Lemma}
+	Если имеет место монобитная модель вкраплений (\ref{container})-(\ref{rule}), то вероятности появления всевозможных биграмм имеют вид :
+	\begin{equation}\label{1:1}
+	P\{y_{t-1}=1, y_t = 1 \}=\frac{1}{4}(1+\varepsilon)(1-\delta)^2+\theta\delta(1-\delta)+\theta^2\delta^2;
+	\end{equation}
+	\begin{equation}\label{0:1}
+	P\{y_{t-1}=1, y_t = 0 \}=\frac{1}{4}(1-\varepsilon)(1-\delta)^2+\frac{1}{2}\delta(1-\delta)+\theta(1-\theta)\delta^2;
+	\end{equation}
+	\begin{equation}
+	P\{y_{t-1}=0, y_t = 1 \}=\frac{1}{4}(1-\varepsilon)(1-\delta)^2+\frac{1}{2}\delta(1-\delta)+\theta(1-\theta)\delta^2;
+	\end{equation}
+	\begin{equation}\label{0:0}
+	P\{y_{t-1}=0, y_t = 0 \}=\frac{1}{4}(1+\varepsilon)(1-\delta)^2+\delta(1-\theta)(1-\delta)+\delta^2(1-\theta)^2.
+	\end{equation}
+\end{Lemma}
+\begin{Lemma}
+	Если имеет место монобитная модель вкраплений (\ref{container})-(\ref{rule}), то для энтропии при $l=2$ справедливо асимптотическое разложение при $\delta \rightarrow 0$ 1-го порядка
+	\begin{equation}
+	H_2(\delta) = H_2(0) + 2\delta\varepsilon\log\frac{1+\varepsilon}{1-\varepsilon}+O(\delta^2).
+	\end{equation}
+\end{Lemma}
+\end{footnotesize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Оценка энтропии 3-граммы}
+\begin{footnotesize}
+\begin{Theorem}
+	Если имеет место монобитная модель вкраплений (\ref{container})-(\ref{rule}) , то для энтропии при $l=3$ справедливо асимптотическое разложение при $\delta \rightarrow 0$ 1-го порядка:
+	\begin{equation}
+	H_3(\delta)=H_3(0)+2\varepsilon\delta \log\frac{1+\varepsilon}{1-\varepsilon}+ O(\delta^2);
+	\end{equation}
+	собственная информация имеет вид:
+	\begin{gather*}
+	I\{y_{i-1} = 0, y_i = 0, y_{i+1} = 0\}=-\log\frac{(1+\varepsilon)^2}{8}+\delta\frac{1}{\ln b}\cdot\frac{2\varepsilon^2+4\varepsilon}{(1+\varepsilon)^2} + O(\delta^2), \\
+	I\{y_{i-1} = 1, y_i = 0, y_{i+1} = 0\}= I\{y_{i-1} = 0, y_i = 0, y_{i+1} = 1\}=\\=
+	-\log\frac{1-\varepsilon^2}{8}-\delta\frac{1}{\ln b}\cdot\frac{2\varepsilon^2}{1-\varepsilon^2} + O(\delta^2),\\
+	I\{y_{i-1} = 0, y_i = 1, y_{i+1} = 0\}= -\log\frac{(1-\varepsilon)^2}{8}+\delta\frac{1}{\ln b}\cdot\frac{2\varepsilon^2-4\varepsilon}{(1-\varepsilon)^2} + O(\delta^2);\\
+	I\{y_{i-1} = j_{1}, y_i = j_2, y_{i+1} = j_{3}\}=I\{y_{i-1} = 1-j_{1}, y_i = 1-j_2, y_{i+1} = 1-j_{3}\},\\ ~j_1,j_2,j_3 \in \{0,1\}.
+	\end{gather*}		
+\end{Theorem}
+\end{footnotesize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Оценка энтропии 4-граммы}
+\begin{footnotesize}
+\begin{Theorem}
+	Если имеет место монобитная модель вкраплений (\ref{container})-(\ref{rule}) , то для энтропии при $l=4$ справедливо асимптотическое разложение при $\delta \rightarrow 0$ 1-го порядка:
+	\begin{equation}
+	H_4(\delta)=H_4(0)+\frac{24\varepsilon\delta}{16} \log\frac{1+\varepsilon}{1-\varepsilon}+ O(\delta^2);
+	\end{equation}
+	собственная информация имеет вид:\\
+	\begin{gather*}
+	I\{y_{i-1} = 0, y_i = 0, y_{i+1} = 0, y_{i+2} = 0 \}=I\{y_{i-1} = 1, y_i = 1, y_{i+1} = 1, y_{i+2} = 1 \}=\\= -\biggr(\log\frac{(1+\varepsilon)^3}{16} + \delta \frac{-2\varepsilon^3-8\varepsilon^2-6\varepsilon}{(1+\varepsilon)^3\ln b}\biggr) +O(\delta^2) ;\\ 
+	I\{y_{i-1} = 0, y_i = 0, y_{i+1} = 0, y_{i+2} = 1 \}=I\{y_{i-1} = 1, y_i = 1, y_{i+1} = 1, y_{i+2} = 0 \}=\\
+	I\{y_{i-1} = 1, y_i = 0, y_{i+1} = 0, y_{i+2} = 0 \}=I\{y_{i-1} = 0, y_i = 1, y_{i+1} = 1, y_{i+2} = 1 \}=\\= -\biggr(\log\frac{(1-\varepsilon)(1+\varepsilon)^2}{16} + \delta \frac{2\varepsilon^3+4\varepsilon^2-2\varepsilon}{(1-\varepsilon)(1+\varepsilon)^2\ln b}\biggr) +O(\delta^2);\\
+	\end{gather*}
+	
+\end{Theorem}
+\end{footnotesize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Оценка энтропии 4-граммы}
+\begin{footnotesize}
+\begin{gather*}
+I\{y_{i-1} = 0, y_i = 0, y_{i+1} = 1, y_{i+2} = 0 \}=I\{y_{i-1} = 1, y_i = 1, y_{i+1} = 0, y_{i+2} = 1 \}=\\
+I\{y_{i-1} = 0, y_i = 1, y_{i+1} = 0, y_{i+2} = 0 \}=I\{y_{i-1} = 1, y_i = 0, y_{i+1} = 1, y_{i+2} = 1 \}=\\=
+-\biggr(\log\frac{(1-\varepsilon)^2(1+\varepsilon)}{16} + \delta \frac{-2\varepsilon^3+4\varepsilon^2+2\varepsilon}{(1-\varepsilon)^2(1+\varepsilon)\ln b}\biggr) +O(\delta^2);\\
+I\{y_{i-1} = 0, y_i = 0, y_{i+1} = 1, y_{i+2} = 1 \}=I\{y_{i-1} = 1, y_i = 1, y_{i+1} = 0, y_{i+2} = 0 \}=\\= -\biggr(\log\frac{(1-\varepsilon)(1+\varepsilon)^2}{16} + \delta \frac{2\varepsilon^3-2\varepsilon}{(1-\varepsilon)(1+\varepsilon)^2\ln b}\biggr) +O(\delta^2);    \\
+I\{y_{i-1} = 0, y_i = 1, y_{i+1} = 1, y_{i+2} = 0 \}=I\{y_{i-1} = 1, y_i = 0, y_{i+1} = 0, y_{i+2} = 1 \}=\\ -\biggr(\log\frac{(1-\varepsilon)^2(1+\varepsilon)}{16} + \delta \frac{-2\varepsilon^3+2\varepsilon}{(1-\varepsilon)^2(1+\varepsilon)\ln b}\biggr) +O(\delta^2);\\  
+I\{y_{i-1} = 1, y_i = 0, y_{i+1} = 1, y_{i+2} = 0 \}=I\{y_{i-1} = 0, y_i = 1, y_{i+1} = 0, y_{i+2} = 1 \}=\\ -\biggr(\log\frac{(1-\varepsilon)^3}{16} + \delta \frac{2\varepsilon^3-8\varepsilon^2+6\varepsilon}{(1-\varepsilon)^3\ln b}\biggr) +O(\delta^2).
+\end{gather*}
+\end{footnotesize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Линейный дискриминантный анализ}
+\begin{footnotesize}
+Анализ последовательности $Y=\{y_1,...,y_T\}$, на основании $(H_3(\delta), H_4(\delta))$ при фиксированном $\varepsilon$, тогда:\newline
+\begin{Conjecture}
+	$H_0$: последовательность $Y$ имеет вкрапления\newline
+\end{Conjecture}
+\begin{Conjecture}
+		$H_1$: последовательность $Y$ не имеет вкраплений\newline
+\end{Conjecture}
+\begin{equation}
+\hat{\alpha} = \frac{n_0-\nu_0}{n_0} - \text{оценка вероятности ошибки первого рода};
+\end{equation}
+\begin{equation}
+\hat{\beta} = \frac{n_1-\nu_1}{n_1} - \text{оценка вероятности ошибки второго рода};
+\end{equation}
+где $n_0$ - количество заведомо пустых последовательностей, $n_1$ - количество последовательностей с вкраплениями,
+$\nu_0$ - количество верно определенных пустых последовательностей,
+$\nu_1$ - количество верно определенных последовательностей с вкраплениями.\newline
+Мощность критерия:
+\begin{equation}
+\hat{w} = \frac{\nu_1}{n_1} 
+\end{equation}
+\end{footnotesize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Результаты ЛДА}
+	\begin{footnotesize}
+		\begin{table} [h] 	
+			\caption{\label{tab:canonsummary}Результаты дискриминантного анализа при $\varepsilon=0.55, n=1000$.}
+			\begin{center}
+				\begin{tabular}{|c|c|c|c|}
+					\hline
+					$\delta$ &  $\hat{\alpha}$ &  $\hat{\beta}$ & $\hat{w}$ \\
+					\hline
+					0.03 & 0.42 & 0.31 & 0.69\\ 
+					\hline
+					0.07 & 0.21 & 0.14 & 0.86\\   				
+					\hline
+					0.09 & 0.14 & 0.08 & 0.92\\  		
+					\hline
+					0.1 & 0.13 & 0.05 & 0.95\\  		
+					\hline
+					0.3 & 0.05 & 0.02 & 0.98\\  
+					\hline			
+				\end{tabular}
+			\end{center}
+			
+		\end{table} 
+		\begin{table} [h] 	
+			\caption{\label{tab:canonsummary}Результаты дискриминантного анализа при $\varepsilon=0.15, n=1000$.}
+			\begin{center}
+				\begin{tabular}{|c|c|c|c|}
+					\hline
+					$\delta$ &  $\hat{\alpha}$ &  $\hat{\beta}$ & $\hat{w}$ \\
+					\hline
+					0.01 & 0.47 & 0.4 & 0.6\\ 
+					\hline
+					0.03 & 0.3 & 0.2 & 0.8\\   		 		
+					\hline
+					0.07 & 0.1 & 0.08 & 0.92\\  		
+					\hline
+					0.1 & 0.06 & 0.05 & 0.95\\  		
+					\hline
+					0.3 & 0.02 & 0.02 & 0.98\\  
+					\hline			
+				\end{tabular}
+			\end{center}
+		\end{table} 
+	\end{footnotesize}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Математическая модель серий}
+	\begin{footnotesize}
+			Пусть последовательность с вкраплениями, задается следующим образом:
+			\begin{gather}\label{series}
+			s - \nu_s, s=\overline{1,k}
+			\end{gather}
+			где $s$ - длина серии, а $\nu_s$ - количество серий длины $s$, $\sum\limits_{s=1}^{k}s\nu_s=T$
+			\begin{Lemma}
+				Для модели (\ref{series}) асимптотическая оценка 1-го порядка вероятности вкрапления при $\delta \rightarrow 0$  имеет вид:
+				\begin{gather*}
+				P\{y_1=u_1,...,y_T=u_T\}=
+				\frac{1}{2^T-1}(1+\varepsilon)^{T-\sum\limits_{s=1}^{k}\nu_s-1-2} (1-\varepsilon)^{\sum\limits_{s=1}^{k}\nu_s-2}\\ \biggl((1+\varepsilon)(1-\varepsilon)-
+				\delta\bigl(\frac{3}{4}\varepsilon^4+\frac{5}{4}\varepsilon^3+\frac{5}{4}\varepsilon^2-\frac{3}{4}\varepsilon - \frac{7}{2}\bigl)\biggl)+O(\delta^2),\\ u_i \in \{0,1\}, i =\overline{1,T}.
+				\end{gather*}
+			\end{Lemma}
+	\end{footnotesize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Компьютерные эксперименты}
+\begin{footnotesize}
+	\begin{figure}[h]
+		\center{\includegraphics[width=0.8\linewidth]{h2_01.png}}
+		\caption{График зависимости энтропии $H_2{(\delta)}$ от длины последовательности}
+		\label{ris:"h2_01.png"}
+	\end{figure}
+\end{footnotesize}
+\end{frame}
+\begin{frame}
+	\frametitle{Компьютерные эксперименты}
+	\begin{footnotesize}
+	\begin{figure}[h]
+		\center{\includegraphics[width=0.8\linewidth]{h3_01.png}}
+		\caption{График зависимости энтропии $H_3{(\delta)}$ от длины последовательности}
+		\label{ris:"h3_01.png"}
+	\end{figure}
+	\end{footnotesize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Компьютерные эксперименты}
+	\begin{footnotesize}
+		\begin{figure}[h]
+			\center{\includegraphics[width=0.8\linewidth]{h4_01.png}}
+			\caption{График зависимости энтропии $H_4{(\delta)}$ от длины последовательности}
+			\label{ris:"h4_01.png"}
+		\end{figure}
+	\end{footnotesize}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Компьютерные эксперименты}
+	\begin{footnotesize}
+\begin{figure}[h]
+	\center{\includegraphics[width=0.8\linewidth]{lda.png}}
+	\caption{График зависимости энтропии $H_4{(\delta)}$ от $H_3{(\delta)}$ при различных долях вкраплений}
+	\label{ris:"lda.png"}
+\end{figure}
+	\end{footnotesize}
+\end{frame}
+
+
+
+
+
+\begin{frame}
+\frametitle{Заключение}
+\begin{footnotesize}
+В работе получены следующие основные результаты:
+\begin{enumerate}
+	\item Исследована математическая модель вкраплений в цепь Маркова 1-го порядка.
+	\item Получены точные значения вероятностей для всевозможных шаблонов \textit{l}-граммы при \textit{l=2,3,4}.
+	\item Получены асимптотические оценки первого порядка для энтропии \textit{l}-граммы при \textit{l=2,3,4}.
+	\item Проведен линейный дискриминантный анализ на основании асимптотических оценок для энтропии 3-граммы и 4-граммы.
+	\item Исследованы вероятностные свойства математической модели вкраплений в цепь Маркова 1-го порядка, задаваемой сериями. 
+	\item Проведены компьютерные эксперименты.
+\end{enumerate}
+\end{footnotesize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Список литературы}
+	\begin{footnotesize}
+		\begin{thebibliography}{0}
+			\bibitem{duhin}
+			А. А. Духин: Теория информации - М.: "Гелиос АРВ"{}, 2007.
+			\bibitem{agranovskiy} 
+			А.В. Аграновский, А. В. Балакин: Стеганография, цифровые водяные знаки о стегоанализе - М.: Вузовская книга, 2009.
+
+			\bibitem{panamarev}
+			К. И. Пономарев "Параметрическая модель вкрапления и ее статистический анализ"{}, Дискрет. матем., 21:4 (2009), 148-157.
+			\bibitem{varnoskiy}
+			Н. П. Варновский, Е. А. Голубев, О. А. Логачев: Современные направления стеганографии. Математика и безопасность информационных технологий. Материалы конференции в МГУ 28-29 октября 2004 г., МЦМНО, М., 2005, с. 32-64.
+			\bibitem{harin}
+			Ю. С. Харин [и др.]: Криптология - Минск: БГУ, 2013.
+			\bibitem{vecherko}
+			Ю. С. Харин, Е. В. Вечерко "Статистическое оценивание параметров модели вкраплений в двоичную цепь Маркова"{}, Дискрет. матем., 25:2 (2013), 135-148.
+			\bibitem{2016}
+			Ю. С. Харин, Е. В. Вечерко "Распознавание вкраплений в двоичную цепь Маркова"{}, Дискрет. матем., 27:3 (2015), 123–144.	
+		\end{thebibliography}
+	\end{footnotesize}
+\end{frame}
+
+
+
+\begin{frame}[c]
+\begin{center}
+\frametitle{\LARGE Спасибо за внимание!}
+
+\bigskip
+
+\inserttitle
+
+\bigskip\bigskip
+\insertauthor
+
+\bigskip\bigskip\bigskip\bigskip\bigskip\bigskip
+
+\insertdate
+
+\end{center}
+\end{frame}
+
+\end{document} 
