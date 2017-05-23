@@ -600,7 +600,7 @@ y(i,j)=\frac{1}{\sqrt{2N}}\sum\limits_{u=0}^{N-1}\sum\limits_{v=0}^{N-1}C(i,u)C(
 
 Далее происходит квантование коэффициентов ДКП. Здесь каждое число из матрицы  делится на элемент из таблицы квантования, а результат округляется до ближайшего целого:
 \begin{equation}
-Y^q(u,v)=Round\biggl(\frac{Y(u,v)}{q(u,v)}\biggl), 
+Y^q(u,v)=\lceil\frac{Y(u,v)}{q(u,v)}\rceil, 
 \end{equation}
 \text{где } $q(u,v)$ - \text{элемент таблицы квантования}
 
